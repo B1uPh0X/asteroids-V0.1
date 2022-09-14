@@ -3,6 +3,7 @@
 #include <vector>
 
 int main() {
+    
     sf::RenderWindow window(sf::VideoMode(800, 500), "Testing");
     sf::CircleShape player1(20, 3);
     player1.setFillColor(sf::Color::Red);
