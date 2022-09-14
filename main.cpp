@@ -11,7 +11,7 @@ int main() {
 
     player1.setFillColor(sf::Color::Red);
     player1.setRotation(90.f);
-    player1.move(0, 384);
+    player1.move(40, 384);
 
     std::vector<sf::CircleShape> asteroids;
 
