@@ -16,7 +16,7 @@ int main() {
 
     std::vector<sf::CircleShape> asteroids;
 
-    for (int i = 0; i <= 14; i++) {
+    for (int i = 0; i <= 18; i++) {
         sf::CircleShape asteroid(20, 8);
         asteroid.setFillColor(sf::Color::White);
         asteroid.move(rand() % 800, rand() % 500);
@@ -47,10 +47,12 @@ int main() {
             if(asteroids[i].getGlobalBounds().intersects(player1.getGlobalBounds())){
                player1.setFillColor(sf::Color::Transparent);
             }
-            int random = rand() % asteroids.size();
-            asteroids[random].move(-1/4.f, 0.f);
+            for(int j = 0; j <= 8; j++){
+                asteroids[j].move(-1/32.f, 0.f);
+            }
             window.draw(asteroids.at(i));
         }
+
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
