@@ -23,7 +23,6 @@ int main() {
     }
 
 
-
     sf::Clock deltaclock;
     window.setFramerateLimit(60);
     while (window.isOpen()) {
@@ -33,42 +32,41 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
-            if(player1.getFillColor() == sf::Color::Transparent){
+            if (player1.getFillColor() == sf::Color::Transparent) {
                 window.close();
             }
         }
-        
+
 
         window.draw(player1);
         window.display();
         window.clear();
         for (unsigned int i = 0; i < asteroids.size(); i++) {
-            if(asteroids[i].getGlobalBounds().intersects(player1.getGlobalBounds())){
-               player1.setFillColor(sf::Color::Transparent);
+            if (asteroids[i].getGlobalBounds().intersects(player1.getGlobalBounds())) {
+                player1.setFillColor(sf::Color::Transparent);
             }
-            for(int j = 0; j <= 8; j++){
-                asteroids[j].move(-1/32.f, 0.f);
+            for (int j = 0; j <= 8; j++) {
+                asteroids[j].move(-1 / 32.f, 0.f);
             }
             window.draw(asteroids.at(i));
         }
 
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            if(velocity.x < 10) velocity.x += acceleration * deltatime.asSeconds();
-            if(velocity.y < 10) velocity.y += acceleration * deltatime.asSeconds();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            if (velocity.x < 10) velocity.x += acceleration * deltatime.asSeconds();
+            if (velocity.y < 10) velocity.y += acceleration * deltatime.asSeconds();
             player1.move(1.f, 0.f);
 
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-            if(velocity.x > 0) velocity.x += acceleration * deltatime.asSeconds();
-            if(velocity.y > 0) velocity.y += acceleration * deltatime.asSeconds();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            if (velocity.x > 0) velocity.x += acceleration * deltatime.asSeconds();
+            if (velocity.y > 0) velocity.y += acceleration * deltatime.asSeconds();
             player1.move(-1.f, 0.f);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
             player1.move(0.f, -1.f);
         }
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
             player1.move(0.f, 1.f);
         }
 
