@@ -6,7 +6,6 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 500), "Asteroids");
     sf::CircleShape player1(20, 3);
     sf::Vector2f velocity(0, 0);
-    sf::Vector2f newPosition(0,0);
     float acceleration = 1.f;
 
 
