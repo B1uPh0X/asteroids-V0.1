@@ -3,7 +3,7 @@
 #include <vector>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 500), "Asteroids");
+    sf::RenderWindow window(sf::VideoMode(1024, 768), "Asteroids");
     sf::CircleShape player1(20, 3);
     sf::Vector2f velocity(0, 0);
     float acceleration = 1.f;
@@ -11,14 +11,14 @@ int main() {
 
     player1.setFillColor(sf::Color::Red);
     player1.setRotation(90.f);
-    player1.move(0, 250);
+    player1.move(0, 384);
 
     std::vector<sf::CircleShape> asteroids;
 
-    for (int i = 0; i <= 18; i++) {
+    for (int i = 0; i <= 30; i++) {
         sf::CircleShape asteroid(20, 8);
         asteroid.setFillColor(sf::Color::White);
-        asteroid.move(rand() % 800, rand() % 500);
+        asteroid.move(rand() % 1024, rand() % 768);
         asteroids.push_back(asteroid);
     }
 
@@ -45,7 +45,7 @@ int main() {
             if (asteroids[i].getGlobalBounds().intersects(player1.getGlobalBounds())) {
                 player1.setFillColor(sf::Color::Transparent);
             }
-            for (int j = 0; j <= 8; j++) {
+            for (int j = 0; j <= 14; j++) {
                 asteroids[j].move(-1 / 32.f, 0.f);
             }
             window.draw(asteroids.at(i));
@@ -75,3 +75,4 @@ int main() {
     }
     return 0;
 }
+
