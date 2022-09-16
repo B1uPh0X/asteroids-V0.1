@@ -8,3 +8,13 @@ How to Compile exe file
 -Run in terminal: >$ mingw32-make -f MakeFile
 
 -Run the newly created .exe file
+
+
+Version Descriptions
+
+---key (V0.0.1.X)
+-V0 - release?
+-.0 - cycle #
+-.1 - week #
+-.X - # of updates
+
