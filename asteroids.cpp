@@ -41,6 +41,7 @@ int asteroids() {
                 window.close();
             }
             if (player1.getFillColor() == sf::Color::Transparent) {
+
                 sound.setBuffer(buffer);
                 sound.play();
                 window.close();
