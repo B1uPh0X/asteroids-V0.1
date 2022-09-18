@@ -23,7 +23,12 @@ int asteroids() {
         asteroid.move(rand() % 1024, rand() % 768);
         asteroids.push_back(asteroid);
     }
-
+    
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sounds\\explosion-02.wav"))
+    return -1;
+    
+    sf::Sound sound;
 
     sf::Clock deltaclock;
     window.setFramerateLimit(60);
@@ -35,6 +40,8 @@ int asteroids() {
                 window.close();
             }
             if (player1.getFillColor() == sf::Color::Transparent) {
+                sound.setbuffer(buffer);
+                sound.play();
                 window.close();
             }
         }
