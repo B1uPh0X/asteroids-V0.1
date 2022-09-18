@@ -27,6 +27,13 @@ int main()
     sf::Text quit;
     sf::Text name;
 
+    // sound
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sounds\\menu-navigate-01.wav"))
+    return -1;
+    
+    sf::Sound sound;
+
     // sets font for text
     start.setFont(font);
     quit.setFont(font);
@@ -100,6 +107,8 @@ int main()
                     (event.mouseButton.x >= 100.f) && (event.mouseButton.x <= 250.f))
                 {
                     // add code here to start the game
+                    sound.setBuffer(buffer);
+                    sound.play();
                     asteroids();
                     std::cout << "game start" << std::endl;
                 }

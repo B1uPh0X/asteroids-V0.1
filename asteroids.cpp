@@ -1,3 +1,4 @@
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include <vector>
@@ -25,7 +26,7 @@ int asteroids() {
     }
     
     sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("sounds\\explosion-02.wav"))
+    if (!buffer.loadFromFile("sounds\\explosion-04.wav"))
     return -1;
     
     sf::Sound sound;
@@ -40,7 +41,8 @@ int asteroids() {
                 window.close();
             }
             if (player1.getFillColor() == sf::Color::Transparent) {
-                sound.setbuffer(buffer);
+
+                sound.setBuffer(buffer);
                 sound.play();
                 window.close();
             }
