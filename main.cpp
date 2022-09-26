@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "asteroids.cpp"
 #include "soundtest.cpp"
@@ -42,7 +43,7 @@ int main()
     if (!buffer.loadFromFile("sounds\\menu-navigate-01.wav"))
     return -1;
     
-    sf::Sound sound;
+    sf::Sound snd;
 
     // sets font for text
     start.setFont(font);
@@ -130,8 +131,8 @@ int main()
                     (event.mouseButton.x >= 100.f) && (event.mouseButton.x <= 250.f))
                 {
                     // add code here to start the game
-                    sound.setBuffer(buffer);
-                    sound.play();
+                    snd.setBuffer(buffer);
+                    snd.play();
                     asteroids();
                     cout << "game start" << endl;
                 }
