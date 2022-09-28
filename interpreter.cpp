@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int interpreter()
+void interpreter(string x)
 {
 
     vector< vector<string> > vec;
@@ -20,7 +20,7 @@ int interpreter()
     int lct, wct;
 
     cout<<"Loading file..."<<endl;
-    infile = "..\\Bots\\test.txt";
+    infile = x;
 
     ifstream inStream;
 
@@ -51,16 +51,15 @@ int interpreter()
         }
         else
             v1.push_back(str);
-        
-        cout<<lct<<endl;
     }
     
+    cout<<"running"<<endl;
+
     int i=0;
     int j=0;
     string e;
+
     do { 
-        for (j=0; j<vec[i].size(); j++) {
-            //cout<<vec[i][j]<<endl;
             e=vec[i][0];
 
             if(e=="!OUT"){
@@ -72,10 +71,6 @@ int interpreter()
                 int c = a + b;
                 cout<<c<<endl;
             }
-        }
         i++;
-        cout<<"-----"<<endl;
     } while (i<vec.size());
-    
-    return 0;
 }
