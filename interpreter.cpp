@@ -7,18 +7,23 @@
 
 using namespace std;
 
+//main interperter function, reads file, stores contents of file in a 2d vector, runs specified commands
 void interpreter(string x)
 {
+    //var declerations
 
+    //vectors
     vector< vector<string> > vec;
-    vector<string> v1;
-    vector<string> v2;
+    vector<string> v1, v2;
 
-    string infile;
-    string str;
+    //strings
+    string infile, str, e;
 
+    //ints
     int lct, wct;
+    int i, j = 0;
 
+    //loads up the file into the filestream
     cout<<"Loading file..."<<endl;
     infile = x;
 
@@ -28,13 +33,15 @@ void interpreter(string x)
     assert(inStream.is_open());
     cout<<"File Loaded"<<endl;
 
-
+    //reads file contents
     while (inStream>>str)
-    {
+    {   
+        //initial vector push for sof
         if (str=="#START"){
             v1.push_back(str);
             lct++;
         }
+        //final vector push for eof
         else if(str=="#END"){
             vec.push_back(v1);
             v1.clear();
@@ -42,6 +49,7 @@ void interpreter(string x)
             vec.push_back(v1);
             lct++;
         }
+        //vector push for the start of a new command
         else if(str.at(0)=='!'){
             vec.push_back(v1);
             v1.clear();
@@ -49,28 +57,35 @@ void interpreter(string x)
             lct++;
             wct=0;
         }
+        //vector push for anything else, parameters for commands
         else
             v1.push_back(str);
     }
     
+    //begins exection of the commands
     cout<<"running"<<endl;
 
-    int i=0;
-    int j=0;
-    string e;
-
     do { 
+            //pulls the command for the current line
             e=vec[i][0];
 
+            //check what command is and do something
+
+            //if e is OUT command
             if(e=="!OUT"){
+                //prints command param
                 cout<<vec[i][1]<<endl;
             }
+            //if e is ADD command
             else if(e=="!ADD"){
+                //adds two params and prints result
                 int a = stoi(vec[i][1]);
                 int b = stoi(vec[i][2]);
                 int c = a + b;
                 cout<<c<<endl;
             }
+        //iterate to the next line
         i++;
+        //finish loop when i is greater than size of outer vector
     } while (i<vec.size());
 }
