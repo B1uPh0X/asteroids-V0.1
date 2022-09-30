@@ -17,9 +17,9 @@ void foo(string y){
 int main(void)
 {   
     //starts thread one
-    thread one(foo, "..\\Bots\\test1.txt");
+    thread one(foo, "..\\Asteroids\\Bots\\test1.txt");
     //starts thread two
-    thread two(foo, "..\\Bots\\test2.txt");
+    thread two(foo, "..\\Asteroids\\Bots\\test2.txt");
 
     //waits for thread one to finish
     one.join();
