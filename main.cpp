@@ -21,7 +21,7 @@ int main() {
 
     sf::Vector2f startPosition(512, 384);
     player1.triangle.setPosition(startPosition);
-    
+
     for (int i = 0; i <= 8; i++) {
         asteroid.create();
         asteroid.shape.setPosition(rand() % 1024, rand() % 768);
@@ -59,15 +59,13 @@ int main() {
                 player1.triangle.setPosition(0.f, player1.triangle.getPosition().y);
             }
             if (player1.triangle.getPosition().x >= window.getSize().x - player1.triangle.getGlobalBounds().width) {
-                player1.triangle.setPosition(window.getSize().x - player1.triangle.getGlobalBounds().width,
-                                             player1.triangle.getPosition().y);
+                player1.triangle.setPosition(window.getSize().x - player1.triangle.getGlobalBounds().width,player1.triangle.getPosition().y);
             }
             if (player1.triangle.getPosition().y <= 0) {
                 player1.triangle.setPosition(player1.triangle.getPosition().x, 0.f);
             }
             if (player1.triangle.getPosition().y >= window.getSize().y - player1.triangle.getGlobalBounds().height) {
-                player1.triangle.setPosition(player1.triangle.getPosition().x,
-                                             window.getSize().y - player1.triangle.getGlobalBounds().height);
+                player1.triangle.setPosition(player1.triangle.getPosition().x,window.getSize().y - player1.triangle.getGlobalBounds().height);
             }
             window.clear();
             window.draw(s);
