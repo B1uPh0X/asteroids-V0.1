@@ -19,10 +19,13 @@ int main() {
 
     std::vector<sf::ConvexShape> asteroids;
 
-    for(int i = 0; i <= 8; i++){
-         asteroid.create();
-         asteroid.shape.setPosition(rand() % 1024 , rand() % 768);
-         asteroids.push_back(asteroid.shape);
+    sf::Vector2f startPosition(512, 384);
+    player1.triangle.setPosition(startPosition);
+    
+    for (int i = 0; i <= 8; i++) {
+        asteroid.create();
+        asteroid.shape.setPosition(rand() % 1024, rand() % 768);
+        asteroids.push_back(asteroid.shape);
 
     }
 
@@ -43,31 +46,38 @@ int main() {
 
                 player1.controls('d', 6.00);
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-
-                player1.triangle.move(cos(player1.triangle.getRotation()*3.14159265/180)*3.f,sin(player1.triangle.getRotation()*3.14159265/180)*-3.f);
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-
-                player1.triangle.move(cos(player1.triangle.getRotation()*3.14159265/180)*-3.f,sin(player1.triangle.getRotation()*3.14159265/180)*3.f);
-
-            if (player1.triangle.getPosition().x >= window.getSize().x  || player1.triangle.getPosition().y >= window.getSize().y ) {
-                player1.triangle.move(-6.f, 0.f);
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                player1.triangle.move(cos(player1.triangle.getRotation() * 3.14159265 / 180) * 3.f,
+                                      sin(player1.triangle.getRotation() * 3.14159265 / 180) * -3.f);
             }
 
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                player1.triangle.move(cos(player1.triangle.getRotation() * 3.14159265 / 180) * -3.f,
+                                      sin(player1.triangle.getRotation() * 3.14159265 / 180) * 3.f);
+            }
+            if (player1.triangle.getPosition().x <= 0) {
+                player1.triangle.setPosition(0.f, player1.triangle.getPosition().y);
+            }
+            if (player1.triangle.getPosition().x >= window.getSize().x - player1.triangle.getGlobalBounds().width) {
+                player1.triangle.setPosition(window.getSize().x - player1.triangle.getGlobalBounds().width,
+                                             player1.triangle.getPosition().y);
+            }
+            if (player1.triangle.getPosition().y <= 0) {
+                player1.triangle.setPosition(player1.triangle.getPosition().x, 0.f);
+            }
+            if (player1.triangle.getPosition().y >= window.getSize().y - player1.triangle.getGlobalBounds().height) {
+                player1.triangle.setPosition(player1.triangle.getPosition().x,
+                                             window.getSize().y - player1.triangle.getGlobalBounds().height);
+            }
             window.clear();
             window.draw(s);
             player1.create();
-            asteroid.create();
             player1.drawPlayer(window);
-            asteroid.draw(window);
             for (unsigned int i = 0; i < asteroids.size(); i++) {
                 window.draw(asteroids.at(i));
             }
             window.display();
         }
-        printf("Player X Position: %1f \n", player1.triangle.getPosition().x);
-        printf("Player Y Position: %1f \n", player1.triangle.getPosition().y);
     }
     return 0;
 }
