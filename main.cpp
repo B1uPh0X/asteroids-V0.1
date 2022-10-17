@@ -4,8 +4,6 @@
 #include "Asteroid.h"
 #include <cmath>
 #include <vector>
-#include <iostream>
-
 
 int main() {
 
@@ -24,9 +22,8 @@ int main() {
 
     for (int i = 0; i <= 8; i++) {
         asteroid.create();
-        asteroid.shape.setPosition(rand() % 1024, rand() % 768);
+        asteroid.shape.setPosition(rand() % 924, rand() % 668);
         asteroids.push_back(asteroid.shape);
-
     }
 
     while (window.isOpen()) {
@@ -40,21 +37,16 @@ int main() {
             }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 
-                player1.controls('u', 6.00);
+                player1.controls('u');
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 
-                player1.controls('d', 6.00);
+                player1.controls('d');
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                player1.triangle.move(cos(player1.triangle.getRotation() * 3.14159265 / 180) * 3.f,
-                                      sin(player1.triangle.getRotation() * 3.14159265 / 180) * -3.f);
+                player1.triangle.move(player1.xmove(), player1.ymove());
             }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                player1.triangle.move(cos(player1.triangle.getRotation() * 3.14159265 / 180) * -3.f,
-                                      sin(player1.triangle.getRotation() * 3.14159265 / 180) * 3.f);
-            }
             if (player1.triangle.getPosition().x <= 0) {
                 player1.triangle.setPosition(0.f, player1.triangle.getPosition().y);
             }
@@ -72,6 +64,9 @@ int main() {
             player1.create();
             player1.drawPlayer(window);
             for (unsigned int i = 0; i < asteroids.size(); i++) {
+                if(asteroids[i].getGlobalBounds().intersects(player1.triangle.getGlobalBounds())){
+                    player1.triangle.setOutlineColor(sf::Color::Magenta);
+                }
                 window.draw(asteroids.at(i));
             }
             window.display();

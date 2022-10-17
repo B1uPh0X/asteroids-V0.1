@@ -4,11 +4,13 @@
 
 class Player {
 public:
-    sf::CircleShape triangle;
+    sf::ConvexShape triangle;
     Player();
     void create();
-    void controls(char direction, float movespeed);
+    void controls(char direction);
     void drawPlayer(sf::RenderWindow &window);
+    int xmove();
+    int ymove();
 };
 
 #endif //ASTEROIDS_GAME_PLAYER_H
