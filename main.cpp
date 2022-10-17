@@ -9,17 +9,17 @@
 using namespace std;
 
 //temporary function that will be expanded upon later, currently just starts the interperter
-void foo(string y){
-    interpreter(y);
+void execute(string y){
+    interpreter(y.c_str());
 }
 
 //main function for the program
 int main(void)
 {   
     //starts thread one
-    thread one(foo, "..\\Asteroids\\Bots\\test1.txt");
+    thread one(execute, "..\\Asteroids\\Bots\\test1.lua");
     //starts thread two
-    thread two(foo, "..\\Asteroids\\Bots\\test2.txt");
+    thread two(execute, "..\\Asteroids\\Bots\\test2.lua");
 
     //waits for thread one to finish
     one.join();

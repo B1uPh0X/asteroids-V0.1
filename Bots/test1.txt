@@ -1,6 +1,0 @@
-#START
-!OUT abc
-!OUT hello
-!OUT world
-!ADD 12 34
-#END

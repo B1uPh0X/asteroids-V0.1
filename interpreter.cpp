@@ -1,91 +1,65 @@
+
+#include <stdio.h>
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <bits/stdc++.h>
-#include <cassert>
-#include <vector>
+
+#ifdef __cplusplus
+# include <lua.hpp>
+#else
+# include <lua.h>
+# include <lualib.h>
+# include <lauxlib.h>
+#endif
+
 
 using namespace std;
 
-//main interperter function, reads file, stores contents of file in a 2d vector, runs specified commands
-void interpreter(string x)
+int foo(lua_State* state)
 {
-    //var declerations
+    cout<<"foo has been called "<<lua_gettop(state)<<endl;
+    return 1;
+}
 
-    //vectors
-    vector< vector<string> > vec;
-    vector<string> v1, v2;
+int bar(lua_State* state)
+{
+    cout<<"BAR\n"<<lua_gettop(state)<<endl;
+    return 1;
+}
 
-    //strings
-    string infile, str, e;
+void print_err(lua_State* state)
+{
+    const char* message = lua_tostring(state, -1);
+    puts(message);
+    lua_pop(state, 1);
+}
 
-    //ints
-    int lct, wct;
-    int i, j = 0;
 
-    //loads up the file into the filestream
-    cout<<"Loading file..."<<endl;
-    infile = x;
+//main interperter function, reads file, stores contents of file in a 2d vector, runs specified commands
+void interpreter(const char* filename)
+{
+    cout<<filename<<endl;
 
-    ifstream inStream;
+    lua_State *state = luaL_newstate();
 
-    inStream.open(infile.data());
-    assert(inStream.is_open());
-    cout<<"File Loaded"<<endl;
-
-    //reads file contents
-    while (inStream>>str)
-    {   
-        //initial vector push for sof
-        if (str=="#START"){
-            v1.push_back(str);
-            lct++;
-        }
-        //final vector push for eof
-        else if(str=="#END"){
-            vec.push_back(v1);
-            v1.clear();
-            v1.push_back(str);
-            vec.push_back(v1);
-            lct++;
-        }
-        //vector push for the start of a new command
-        else if(str.at(0)=='!'){
-            vec.push_back(v1);
-            v1.clear();
-            v1.push_back(str);
-            lct++;
-            wct=0;
-        }
-        //vector push for anything else, parameters for commands
-        else
-            v1.push_back(str);
-    }
+    luaL_openlibs(state);
+    lua_register(state, "foo", foo);
+    lua_register(state, "bar", bar);
     
-    //begins exection of the commands
-    cout<<"running"<<endl;
+    int result;
+    result = luaL_loadfile(state, filename);
 
-    do { 
-            //pulls the command for the current line
-            e=vec[i][0];
+    if ( result != LUA_OK ) { 
+        cerr<<state<<endl;
+        cout<<"1"<<endl;
+        print_err(state);
+        return;
+    }
 
-            //check what command is and do something
+    result = lua_pcall(state, 0, LUA_MULTRET, 0);
 
-            //if e is OUT command
-            if(e=="!OUT"){
-                //prints command param
-                cout<<vec[i][1]<<endl;
-            }
-            //if e is ADD command
-            else if(e=="!ADD"){
-                //adds two params and prints result
-                int a = stoi(vec[i][1]);
-                int b = stoi(vec[i][2]);
-                int c = a + b;
-                cout<<c<<endl;
-            }
-        //iterate to the next line
-        i++;
-        //finish loop when i is greater than size of outer vector
-    } while (i<vec.size());
+    if ( result != LUA_OK ){
+        cerr<<state<<endl;
+        cout<<"2"<<endl;
+        print_err(state);
+        return;
+    }
 }
