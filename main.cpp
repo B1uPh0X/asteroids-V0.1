@@ -1,7 +1,13 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/OpenGL.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
+#include <thread>
+#include <string>
+#include <src/include/TGUI/TGUI.hpp>
 #include "game.cpp"
 #include "Asteroid.cpp"
+#include "interpreter.cpp"
 #include "Asteroid.h"
 #include "Player.cpp"
 #include "Player.h"
@@ -9,11 +15,17 @@
 // #include <nana/gui/widgets/label.hpp>
 // #include <nana/gui/widgets/button.hpp>
 
-#include <TGUI/TGUI.hpp>
+using namespace std;
+
+
+void execute(string y){
+    interpreter(y.c_str());
+}
 
 void startGame()
 {
-    std::cout << "Start Game pressed" << std::endl;
+
+    cout << "Start Game pressed" << endl;
     game();
 }
 
@@ -67,8 +79,8 @@ int main()
 
     gui.add(label);
 
-    std::cout << gui.getView().getSize().x << std::endl;
-    std::cout << label->getAutoSize() << std::endl;
+    cout << gui.getView().getSize().x << endl;
+    cout << label->getAutoSize() << endl;
 
     // Adds text box
     auto editBox = tgui::EditBox::create();
@@ -92,6 +104,7 @@ int main()
     }
 
     // gui.mainLoop();
+    return 0;
 }
 
 // int main()
