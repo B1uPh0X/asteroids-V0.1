@@ -4,7 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <string>
-#include <src/include/TGUI/TGUI.hpp>
+#include <TGUI/TGUI.hpp>
 #include "game.cpp"
 #include "Asteroid.cpp"
 #include "interpreter.cpp"
@@ -24,9 +24,11 @@ void execute(string y){
 
 void startGame()
 {
+    thread one(execute, "Bots\\test1.lua");
+    thread two(execute, "Bots\\test2.lua");
 
     cout << "Start Game pressed" << endl;
-    game();
+    thread the(game);
 }
 
 int main()

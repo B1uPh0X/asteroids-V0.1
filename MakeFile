@@ -3,4 +3,4 @@ all: compile link
 compile:
 	g++ -I src/include -I include -c main.cpp Asteroid.cpp Player.cpp game.cpp interpreter.cpp
 link:
-	g++ main.o -o main -L src/lib -L . -l sfml-graphics -l sfml-window -l sfml-system -l sfml-audio -l lua -l tgui
+	g++ main.o -o main -L src/lib -L . -l sfml-graphics -l sfml-window -l sfml-system -l sfml-audio -l lua -l tgui -static-libgcc -static-libstdc++
