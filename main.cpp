@@ -5,7 +5,6 @@
 #include <thread>
 #include <string>
 #include <TGUI/TGUI.hpp>
-// #include "game.cpp"
 #include "Asteroid.cpp"
 #include "interpreter.cpp"
 #include "Asteroid.h"
@@ -22,6 +21,7 @@ void execute(string y)
 
 void initPlayers()
 {
+
     cout << "init pressed" << endl;
     init();
 }
