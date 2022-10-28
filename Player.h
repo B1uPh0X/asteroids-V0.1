@@ -9,6 +9,7 @@ public:
     void create();
     void controls(char direction);
     void drawPlayer(sf::RenderWindow &window);
+    void boundaries(sf::RenderWindow &window);
     int xmove();
     int ymove();
 };
