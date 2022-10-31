@@ -15,6 +15,7 @@ int main() {
     Weapon gun;
     Weapon bomb;
     int limit = 0;
+    int shoottimer = 0;
 
     sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Roids");
     sf::Texture t;
@@ -28,6 +29,23 @@ int main() {
     sf::Sound sound;
 
     std::vector<sf::ConvexShape> asteroids;
+
+    // bullets
+    gun.bulletcreate();
+    std::vector<sf::RectangleShape> bullets;
+    bullets.push_back(gun.bullet);
+    if(shoottimer < 3){
+        shoottimer++;
+    }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && shoottimer >= 3){
+       gun.bullet.setPosition(player1.triangle.getPosition().x, player1.triangle.getPosition().y);
+       bullets.push_back(gun.bullet);
+
+       shoottimer = 0;
+    }
+    for(size_t i = 0; i < bullets.size(); i++){
+        bullets[i].move(player1.xmove() , player1.ymove());
+    }
 
     sf::Vector2f startPosition(512 - 100, 384 - 50);
     player1.triangle.setPosition(startPosition);
@@ -46,6 +64,9 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
+            if (event.type == sf::Event::LostFocus){
+                window.close();
+            }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 
                 player1.controls('u');
@@ -57,7 +78,8 @@ int main() {
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
                 player1.triangle.move(player1.xmove(), player1.ymove());
             }
-
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            }
             player1.boundaries(window);
             window.clear();
             window.draw(s);
