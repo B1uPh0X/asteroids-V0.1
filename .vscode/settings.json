@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "filesystem": "cpp",
+    "xstring": "cpp",
+    "vector": "cpp",
+    "ostream": "cpp",
+    "charconv": "cpp"
+  }
+}

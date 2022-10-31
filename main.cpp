@@ -12,6 +12,8 @@
 #include "Player.cpp"
 #include "Player.h"
 #include "init.cpp"
+#include "Weapon.h"
+#include "Weapon.cpp"
 
 using namespace std;
 
