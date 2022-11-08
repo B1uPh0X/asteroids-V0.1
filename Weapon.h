@@ -7,6 +7,9 @@ public:
     sf::RectangleShape bullet;
     sf::CircleShape bomb;
     void bulletcreate();
+    void bulletfire(int x, int y);
+    void bulletdraw(sf::RenderWindow &window);
+    void bulletposition();
     void bombcreate();
 };
 

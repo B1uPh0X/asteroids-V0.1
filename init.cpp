@@ -115,68 +115,83 @@ int init()
   playerOne->setSize(50, 50);                                       // set size
   playerOne->setTextSize(24);                                       // set text size
   playerOne->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerOne->setPosition(425, 125);                                 // set position
+  playerOne->setPosition(125, 650);                                 // set position
   playerOne->setText("+");                                          // set text
   playerOne->onPress([&]
                      { listBox->setVisible(true); }); // closes the main menu window on press
   gui.add(playerOne);                                 // adds the player button
 
-  // add player 2 button
-  auto playerTwo = tgui::Button::create();
-  playerTwo->setSize(50, 50);                                       // set size
-  playerTwo->setTextSize(24);                                       // set text size
-  playerTwo->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerTwo->setPosition(425, 325);                                 // set position
-  playerTwo->setText("+");                                          // set text
-  gui.add(playerTwo);                                               // adds the player button
+  // // add player 2 button
+  // auto playerTwo = tgui::Button::create();
+  // playerTwo->setSize(50, 50);                                       // set size
+  // playerTwo->setTextSize(24);                                       // set text size
+  // playerTwo->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+  // playerTwo->setPosition(425, 325);                                 // set position
+  // playerTwo->setText("+");                                          // set text
+  // gui.add(playerTwo);                                               // adds the player button
 
-  // add player 3 button
-  auto playerThree = tgui::Button::create();
-  playerThree->setSize(50, 50);                                       // set size
-  playerThree->setTextSize(24);                                       // set text size
-  playerThree->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerThree->setPosition(425, 525);                                 // set position
-  playerThree->setText("+");                                          // set text
-  gui.add(playerThree);                                               // adds the player button
+  // // add player 3 button
+  // auto playerThree = tgui::Button::create();
+  // playerThree->setSize(50, 50);                                       // set size
+  // playerThree->setTextSize(24);                                       // set text size
+  // playerThree->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+  // playerThree->setPosition(425, 525);                                 // set position
+  // playerThree->setText("+");                                          // set text
+  // gui.add(playerThree);                                               // adds the player button
 
-  // add player 4 button
-  auto playerFour = tgui::Button::create();
-  playerFour->setSize(50, 50);                                       // set size
-  playerFour->setTextSize(24);                                       // set text size
-  playerFour->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerFour->setPosition(875, 125);                                 // set position
-  playerFour->setText("+");                                          // set text
-  gui.add(playerFour);                                               // adds the player button
+  // // add player 4 button
+  // auto playerFour = tgui::Button::create();
+  // playerFour->setSize(50, 50);                                       // set size
+  // playerFour->setTextSize(24);                                       // set text size
+  // playerFour->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+  // playerFour->setPosition(875, 125);                                 // set position
+  // playerFour->setText("+");                                          // set text
+  // gui.add(playerFour);                                               // adds the player button
 
-  // add player 5 button
-  auto playerFive = tgui::Button::create();
-  playerFive->setSize(50, 50);                                       // set size
-  playerFive->setTextSize(24);                                       // set text size
-  playerFive->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerFive->setPosition(875, 325);                                 // set position
-  playerFive->setText("+");                                          // set text
-  gui.add(playerFive);                                               // adds the player button
+  // // add player 5 button
+  // auto playerFive = tgui::Button::create();
+  // playerFive->setSize(50, 50);                                       // set size
+  // playerFive->setTextSize(24);                                       // set text size
+  // playerFive->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+  // playerFive->setPosition(875, 325);                                 // set position
+  // playerFive->setText("+");                                          // set text
+  // gui.add(playerFive);                                               // adds the player button
 
-  // add player 6 button
-  auto playerSix = tgui::Button::create();
-  playerSix->setSize(50, 50);                                       // set size
-  playerSix->setTextSize(24);                                       // set text size
-  playerSix->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  playerSix->setPosition(875, 525);                                 // set position
-  playerSix->setText("+");                                          // set text
-  gui.add(playerSix);                                               // adds the player button
+  // // add player 6 button
+  // auto playerSix = tgui::Button::create();
+  // playerSix->setSize(50, 50);                                       // set size
+  // playerSix->setTextSize(24);                                       // set text size
+  // playerSix->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+  // playerSix->setPosition(875, 525);                                 // set position
+  // playerSix->setText("+");                                          // set text
+  // gui.add(playerSix);                                               // adds the player button
 
   // delete player 1 button
   auto delPlayerOne = tgui::Button::create();
   delPlayerOne->setSize(50, 50);                                       // set size
   delPlayerOne->setTextSize(24);                                       // set text size
   delPlayerOne->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerOne->setPosition(480, 125);                                 // set position
+  delPlayerOne->setPosition(425, 125);                                 // set position
   delPlayerOne->setText("-");                                          // set text
   delPlayerOne->onPress([&]
                         {
-    selectedPlayers.erase(selectedPlayers.begin());
-    chatbox->removeLine(0); });
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin());
+      chatbox->removeLine(0);
+      chatbox->addLine(selectedPlayers[0], tgui::Color::White);
+      chatbox2->removeLine(0);
+      chatbox2->addLine(selectedPlayers[1], tgui::Color::White);
+      chatbox3->removeLine(0);
+      chatbox3->addLine(selectedPlayers[2], tgui::Color::White);
+      chatbox4->removeLine(0);
+      chatbox4->addLine(selectedPlayers[3], tgui::Color::White);
+      chatbox5->removeLine(0);
+      chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerOne); // adds the del player 1 button
 
   // delete player 2 button
@@ -184,12 +199,25 @@ int init()
   delPlayerTwo->setSize(50, 50);                                       // set size
   delPlayerTwo->setTextSize(24);                                       // set text size
   delPlayerTwo->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerTwo->setPosition(480, 325);                                 // set position
+  delPlayerTwo->setPosition(425, 325);                                 // set position
   delPlayerTwo->setText("-");                                          // set text
   delPlayerTwo->onPress([&]
                         {
-    selectedPlayers.erase(selectedPlayers.begin() + 1);
-    chatbox2->removeLine(0); });
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin() + 1);
+      chatbox2->removeLine(0);
+      chatbox2->addLine(selectedPlayers[1], tgui::Color::White);
+      chatbox3->removeLine(0);
+      chatbox3->addLine(selectedPlayers[2], tgui::Color::White);
+      chatbox4->removeLine(0);
+      chatbox4->addLine(selectedPlayers[3], tgui::Color::White);
+      chatbox5->removeLine(0);
+      chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerTwo); // adds the del player 2 button
 
   // delete player 3 button
@@ -197,12 +225,23 @@ int init()
   delPlayerThree->setSize(50, 50);                                       // set size
   delPlayerThree->setTextSize(24);                                       // set text size
   delPlayerThree->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerThree->setPosition(480, 525);                                 // set position
+  delPlayerThree->setPosition(425, 525);                                 // set position
   delPlayerThree->setText("-");                                          // set text
   delPlayerThree->onPress([&]
-                        {
-    selectedPlayers.erase(selectedPlayers.begin() + 2);
-    chatbox3->removeLine(0); });
+                          {
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin() + 2);
+      chatbox3->removeLine(0);
+      chatbox3->addLine(selectedPlayers[2], tgui::Color::White);
+      chatbox4->removeLine(0);
+      chatbox4->addLine(selectedPlayers[3], tgui::Color::White);
+      chatbox5->removeLine(0);
+      chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerThree); // adds the del player 3 button
 
   // delete player 4 button
@@ -210,12 +249,21 @@ int init()
   delPlayerFour->setSize(50, 50);                                       // set size
   delPlayerFour->setTextSize(24);                                       // set text size
   delPlayerFour->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerFour->setPosition(930, 125);                                 // set position
+  delPlayerFour->setPosition(875, 125);                                 // set position
   delPlayerFour->setText("-");                                          // set text
   delPlayerFour->onPress([&]
-                        {
-    selectedPlayers.erase(selectedPlayers.begin() + 3);
-    chatbox4->removeLine(0); });
+                         {
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin() + 3);
+      chatbox4->removeLine(0);
+      chatbox4->addLine(selectedPlayers[3], tgui::Color::White);
+      chatbox5->removeLine(0);
+      chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerFour); // adds the del player 4 button
 
   // delete player 5 button
@@ -223,12 +271,19 @@ int init()
   delPlayerFive->setSize(50, 50);                                       // set size
   delPlayerFive->setTextSize(24);                                       // set text size
   delPlayerFive->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerFive->setPosition(930, 325);                                 // set position
+  delPlayerFive->setPosition(875, 325);                                 // set position
   delPlayerFive->setText("-");                                          // set text
   delPlayerFive->onPress([&]
-                        {
-    selectedPlayers.erase(selectedPlayers.begin() + 4);
-    chatbox5->removeLine(0); });
+                         {
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin() + 4);
+      chatbox5->removeLine(0);
+      chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerFive); // adds the del player 5 button
 
   // delete player 6 button
@@ -236,12 +291,17 @@ int init()
   delPlayerSix->setSize(50, 50);                                       // set size
   delPlayerSix->setTextSize(24);                                       // set text size
   delPlayerSix->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-  delPlayerSix->setPosition(930, 525);                                 // set position
+  delPlayerSix->setPosition(875, 525);                                 // set position
   delPlayerSix->setText("-");                                          // set text
   delPlayerSix->onPress([&]
                         {
-    selectedPlayers.erase(selectedPlayers.begin() + 5);
-    chatbox6->removeLine(0); });
+    if (selectedPlayers.size() != 0) {
+      selectedPlayers.erase(selectedPlayers.begin() + 5);
+      chatbox6->removeLine(0);
+      chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
+    } else {
+      cout << "Array empty" << endl;
+    } });
   gui.add(delPlayerSix); // adds the del player 6 button
 
   // start button
@@ -289,6 +349,8 @@ int init()
         break;
 
       case sf::Event::MouseButtonPressed:
+        cout << "\n"
+             << endl;
         if (listBox->isVisible() == true)
         {
           if (!in_array(listBox->getSelectedItem().toStdString(), selectedPlayers))
@@ -302,36 +364,36 @@ int init()
           }
 
           chatbox->removeLine(0);
-          chatbox->addLine(selectedPlayers[0], tgui::Color::Black);
+          chatbox->addLine(selectedPlayers[0], tgui::Color::White);
 
           if (selectedPlayers.size() > 1)
           {
             chatbox2->removeLine(0);
-            chatbox2->addLine(selectedPlayers[1], tgui::Color::Black);
+            chatbox2->addLine(selectedPlayers[1], tgui::Color::White);
           }
 
           if (selectedPlayers.size() > 2)
           {
             chatbox3->removeLine(0);
-            chatbox3->addLine(selectedPlayers[2], tgui::Color::Black);
+            chatbox3->addLine(selectedPlayers[2], tgui::Color::White);
           }
 
           if (selectedPlayers.size() > 3)
           {
             chatbox4->removeLine(0);
-            chatbox4->addLine(selectedPlayers[3], tgui::Color::Black);
+            chatbox4->addLine(selectedPlayers[3], tgui::Color::White);
           }
 
           if (selectedPlayers.size() > 4)
           {
             chatbox5->removeLine(0);
-            chatbox5->addLine(selectedPlayers[4], tgui::Color::Black);
+            chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
           }
 
           if (selectedPlayers.size() > 5)
           {
             chatbox6->removeLine(0);
-            chatbox6->addLine(selectedPlayers[5], tgui::Color::Black);
+            chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
           }
           listBox->setVisible(false);
         }

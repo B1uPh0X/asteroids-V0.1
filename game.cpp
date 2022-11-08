@@ -1,116 +1,176 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
 #include "Player.h"
 #include "Asteroid.h"
 #include "Weapon.h"
 #include <cmath>
 #include <vector>
 
-
-int game() {
+int game()
+{
 
     Player player1;
+    Player player2;
+    Player player3;
+    Player player4;
+    Player player5;
+    Player player6;
     Asteroid asteroid;
-    Weapon gun;
     Weapon bomb;
+    Weapon bullet;
     int limit = 0;
-    int shoottimer = 0;
+    bool isfiring = false;
 
+    // window
     sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Roids");
     sf::Texture t;
     t.loadFromFile("./images/space_background.jpg");
     sf::Sprite s(t);
 
-    sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("./sounds/explosion-04.wav"))
-        return -1;
-
-    sf::Sound sound;
-
+    // vectors for the objects
     std::vector<sf::ConvexShape> asteroids;
+    std::vector<Weapon> bullets;
 
-    // bullets
-    gun.bulletcreate();
-    std::vector<sf::RectangleShape> bullets;
-    bullets.push_back(gun.bullet);
-    if(shoottimer < 3){
-        shoottimer++;
-    }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && shoottimer >= 3){
-       gun.bullet.setPosition(player1.triangle.getPosition().x, player1.triangle.getPosition().y);
-       bullets.push_back(gun.bullet);
+    // position at the origin
+    sf::Vector2f startPosition(512, 384);
 
-       shoottimer = 0;
-    }
-    for(size_t i = 0; i < bullets.size(); i++){
-        bullets[i].move(player1.xmove() , player1.ymove());
-    }
+    // setting positions for the players
+    player1.triangle.setPosition(startPosition.x - 300, startPosition.y - 150);
+    player1.triangle.setRotation(90.f);
+    player2.triangle.setPosition(startPosition.x, startPosition.y - 150);
+    player2.triangle.setRotation(90.f);
+    player3.triangle.setPosition(startPosition.x + 300, startPosition.y - 150);
+    player3.triangle.setRotation(90.f);
+    player4.triangle.setPosition(startPosition.x - 300, startPosition.y + 150);
+    player4.triangle.setRotation(-90.f);
+    player5.triangle.setPosition(startPosition.x, startPosition.y + 150);
+    player5.triangle.setRotation(-90.f);
+    player6.triangle.setPosition(startPosition.x + 300, startPosition.y + 150);
+    player6.triangle.setRotation(-90.f);
 
-    sf::Vector2f startPosition(512 - 100, 384 - 50);
-    player1.triangle.setPosition(startPosition);
-
-    for (int i = 0; i <= 8; i++) {
+    // creating asteroids and setting positions for them
+    for (int i = 0; i <= 8; ++i)
+    {
         asteroid.create();
         asteroid.shape.setPosition(rand() % 924, rand() % 668);
         asteroids.push_back(asteroid.shape);
     }
 
-    while (window.isOpen()) {
+    // deltattime
+    sf::Clock deltaclock;
+
+    while (window.isOpen())
+    {
         window.setFramerateLimit(60);
+        sf::Time deltattime = deltaclock.restart();
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window.pollEvent(event))
+        {
 
-            if (event.type == sf::Event::Closed) {
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
             }
-            if (event.type == sf::Event::LostFocus){
-                window.close();
-            }
+            // movement for player
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-
+            {
                 player1.controls('u');
-
+            }
             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-
+            {
                 player1.controls('d');
-
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            {
                 player1.triangle.move(player1.xmove(), player1.ymove());
             }
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            {
             }
-            player1.boundaries(window);
             window.clear();
             window.draw(s);
+
+            // player 1 basic functions
             player1.create();
+            player1.color1();
             player1.drawPlayer(window);
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-                bomb.bombcreate();
-                bomb.bomb.setPosition(player1.triangle.getPosition());
-                window.draw(bomb.bomb);
+            player1.boundaries(window);
+
+            // player 2 basic functions;
+            player2.create();
+            player2.color2();
+            player2.drawPlayer(window);
+            player2.boundaries(window);
+
+            // player 3 basic functions
+            player3.create();
+            player3.color3();
+            player3.drawPlayer(window);
+            player3.boundaries(window);
+
+            // player 4 basic functions
+            player4.create();
+            player4.color4();
+            player4.drawPlayer(window);
+            player4.boundaries(window);
+
+            // player 5 basic functions
+            player5.create();
+            player5.color5();
+            player5.drawPlayer(window);
+            player5.boundaries(window);
+
+            // player 6 basic functions
+            player6.create();
+            player6.color6();
+            player6.drawPlayer(window);
+            player6.boundaries(window);
+
+            // bullets
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                isfiring = true;
             }
-            for (unsigned int i = 0; i < asteroids.size(); i++) {
-                sf::FloatRect asteroidblock = asteroids[i].getGlobalBounds();
+
+            if (isfiring)
+            {
+                bullet.bulletcreate();
+                bullet.bullet.setPosition(player1.triangle.getPosition().x, player1.triangle.getPosition().y);
+                bullet.bullet.setRotation(player1.triangle.getRotation());
+                bullets.push_back(bullet);
+                isfiring = false;
+            }
+
+            for (auto &shot : bullets)
+            {
+                shot.bulletdraw(window);
+                shot.bulletfire(player1.xmove(), player1.ymove());
+            }
+
+            // collision with asteroid and player
+            for (auto &rock : asteroids)
+            {
+                sf::FloatRect asteroidblock = rock.getGlobalBounds();
                 sf::FloatRect playerblock = player1.triangle.getGlobalBounds();
-                if (asteroidblock.intersects(playerblock)) {
+                if (asteroidblock.intersects(playerblock))
+                {
                     player1.triangle.move(-player1.xmove(), -player1.ymove());
-                    sound.setBuffer(buffer);
-                    sound.play();
                     player1.triangle.setPosition(rand() % 924, rand() % 668);
                     limit++;
                 }
-                if (limit == 3) {
+                if (limit == 3)
+                {
                     window.close();
                 }
-                window.draw(asteroids.at(i));
+                // collision with bullet and asteroid(in progress)
+
+                window.draw(rock);
             }
             window.display();
         }
     }
-    exit(0);
+    return 0;
 }
-
 
 // #include <SFML/Graphics.hpp>
 // #include <SFML/Window.hpp>
@@ -119,10 +179,10 @@ int game() {
 // #include "Asteroid.h"
 // #include <cmath>
 // #include <vector>
+// #include <iostream>
 
 // int game()
 // {
-
 //     Player player1;
 //     Asteroid asteroid;
 //     int limit = 0;
@@ -134,7 +194,9 @@ int game() {
 
 //     sf::SoundBuffer buffer;
 //     if (!buffer.loadFromFile("./sounds/explosion-04.wav"))
+//     {
 //         return -1;
+//     }
 
 //     sf::Sound sound;
 
@@ -146,15 +208,15 @@ int game() {
 //     for (int i = 0; i <= 8; i++)
 //     {
 //         asteroid.create();
-//         // asteroid.shape.setPosition(rand() % 924, rand() % 668);
-
+//         asteroid.shape.setPosition(rand() % 924, rand() % 668);
 //         asteroids.push_back(asteroid.shape);
 //     }
 
 //     while (window.isOpen())
 //     {
-//         window.setFramerateLimit(60);
+//         window.setFramerateLimit(120);
 //         sf::Event event;
+
 //         while (window.pollEvent(event))
 //         {
 
@@ -166,16 +228,31 @@ int game() {
 
 //                 player1.controls('u');
 
-//             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+//             if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 
 //                 player1.controls('d');
 
-//             else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+//             if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 //             {
 //                 player1.triangle.move(player1.xmove(), player1.ymove());
 //             }
 
-//             player1.boundaries(window);
+//             if (player1.triangle.getPosition().x <= 0)
+//             {
+//                 player1.triangle.setPosition(0.f, player1.triangle.getPosition().y);
+//             }
+//             if (player1.triangle.getPosition().x >= window.getSize().x - player1.triangle.getGlobalBounds().width)
+//             {
+//                 player1.triangle.setPosition(window.getSize().x - player1.triangle.getGlobalBounds().width, player1.triangle.getPosition().y);
+//             }
+//             if (player1.triangle.getPosition().y <= 0)
+//             {
+//                 player1.triangle.setPosition(player1.triangle.getPosition().x, 0.f);
+//             }
+//             if (player1.triangle.getPosition().y >= window.getSize().y - player1.triangle.getGlobalBounds().height)
+//             {
+//                 player1.triangle.setPosition(player1.triangle.getPosition().x, window.getSize().y - player1.triangle.getGlobalBounds().height);
+//             }
 //             window.clear();
 //             window.draw(s);
 //             player1.create();
@@ -184,6 +261,7 @@ int game() {
 //             {
 //                 sf::FloatRect asteroidblock = asteroids[i].getGlobalBounds();
 //                 sf::FloatRect playerblock = player1.triangle.getGlobalBounds();
+
 //                 if (asteroidblock.intersects(playerblock))
 //                 {
 //                     player1.triangle.move(-player1.xmove(), -player1.ymove());
@@ -192,8 +270,7 @@ int game() {
 //                     player1.triangle.setPosition(rand() % 924, rand() % 668);
 //                     limit++;
 //                 }
-//                 if (limit == 3)
-//                 {
+//                 if (limit == 3) {
 //                     window.close();
 //                 }
 //                 window.draw(asteroids.at(i));
@@ -201,5 +278,5 @@ int game() {
 //             window.display();
 //         }
 //     }
-//     exit(0);
+//     return 0;
 // }
