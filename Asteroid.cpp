@@ -1,8 +1,9 @@
 #include "Asteroid.h"
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 
-void Asteroid::create(){
+void Asteroid::create() {
     shape.setPointCount(11);
     shape.setFillColor(sf::Color::Transparent);
     shape.setOutlineThickness(1.f);
@@ -19,11 +20,26 @@ void Asteroid::create(){
     shape.setPoint(8, sf::Vector2f(88, 126));
     shape.setPoint(9, sf::Vector2f(50, 120));
     shape.setPoint(10, sf::Vector2f(35, 90));
+    shape.setOrigin(77, 93);
 }
 
-void Asteroid::draw(sf::RenderWindow &window)
-{
+void Asteroid::draw(sf::RenderWindow &window) {
     window.draw(shape);
-    //sf::Texture Rock = shape.getTexture();
+}
+
+void Asteroid::setPosition(){
+    int num = rand() % 4;
+    if (num == 0) {
+       shape.setPosition(0, 0);
+    }
+    if (num == 1) {
+        shape.setPosition(1024, 0);
+    }
+    if (num == 2) {
+        shape.setPosition(0, 768);
+    }
+    if (num == 3) {
+        shape.setPosition(1024, 768);
+    }
 }
 

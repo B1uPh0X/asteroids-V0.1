@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Asteroid.h"
 #include "Weapon.h"
+#include "ObjectManager.h"
 #include <cmath>
 #include <vector>
 
@@ -27,7 +28,7 @@ int main() {
     sf::Sprite s(t);
 
 //vectors for the objects
-    std::vector<sf::ConvexShape> asteroids;
+    std::vector<Asteroid> asteroids;
     std::vector<Weapon> bullets;
 
 //position at the origin
@@ -48,10 +49,10 @@ int main() {
     player6.triangle.setRotation(-90.f);
 
 //creating asteroids and setting positions for them
-    for (int i = 0; i <= 8; ++i) {
+    for (int i = 0; i <= 2; ++i) {
         asteroid.create();
-        asteroid.shape.setPosition(rand() % 924, rand() % 668);
-        asteroids.push_back(asteroid.shape);
+        asteroid.setPosition();
+        asteroids.push_back(asteroid);
     }
 
 //deltattime
@@ -60,6 +61,7 @@ int main() {
     while (window.isOpen()) {
         window.setFramerateLimit(60);
         sf::Time deltattime = deltaclock.restart();
+        player2.triangle.move(player2.xmove(), player1.ymove());
         sf::Event event;
         while (window.pollEvent(event)) {
 
@@ -135,8 +137,9 @@ int main() {
 
 //collision with asteroid and player
             for (auto & rock : asteroids) {
-                sf::FloatRect asteroidblock = rock.getGlobalBounds();
+                sf::FloatRect asteroidblock = rock.shape.getGlobalBounds();
                 sf::FloatRect playerblock = player1.triangle.getGlobalBounds();
+                sf::FloatRect shotbounds = bullet.bullet.getGlobalBounds();
                 if (asteroidblock.intersects(playerblock)) {
                     player1.triangle.move(-player1.xmove(), -player1.ymove());
                     player1.triangle.setPosition(rand() % 924, rand() % 668);
@@ -145,9 +148,15 @@ int main() {
                 if (limit == 3) {
                     window.close();
                 }
-//collision with bullet and asteroid(in progress)
-
-                window.draw(rock);
+//collision with bullet and asteroids(in progress)
+                for (auto it = asteroids.begin(); it != asteroids.end(); ++it){
+                    sf::FloatRect asteroidbounds = rock.shape.getGlobalBounds();
+                    sf::FloatRect gunbounds = bullet.bullet.getGlobalBounds();
+                    if(shotbounds.intersects(asteroidblock)){
+                        it = asteroids.erase(it);
+                    }
+                }
+                rock.draw(window);
             }
             window.display();
         }
