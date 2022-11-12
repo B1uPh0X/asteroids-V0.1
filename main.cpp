@@ -7,6 +7,7 @@
 #include <TGUI/TGUI.hpp>
 #include "Asteroid.cpp"
 #include "interpreter.cpp"
+#include "PlayerController.cpp"
 #include "Asteroid.h"
 #include "Player.cpp"
 #include "Player.h"
@@ -23,11 +24,52 @@ void initPlayers()
 {
 
     cout << "init pressed" << endl;
-    init();
+    //init();
 }
 
 int main()
 {
+    string sarr[6] = {"A","X","X","X","X","X"};
+    PlayerController(sarr);
+    
+    string qsarr[6] = {"A","A","X","X","X","X"};
+    PlayerController(qsarr);
+    
+    string asarr[6] = {"A","A","A","X","X","X"};
+    PlayerController(asarr);
+        
+    string zsarr[6] = {"A","A","A","A","X","X"};
+    PlayerController(zsarr);
+        
+    string xsarr[6] = {"A","A","A","A","A","X"};
+    PlayerController(xsarr);
+        
+    string ssarr[6] = {"A","A","A","A","A","A"};
+    PlayerController(ssarr);
+        
+    string wsarr[6] = {"M","X","X","X","X","X"};
+    PlayerController(wsarr);
+    
+    string esarr[6] = {"M","A","X","X","X","X"};
+    PlayerController(esarr);
+    
+    string dsarr[6] = {"M","A","A","X","X","X"};
+    PlayerController(dsarr);
+        
+    string csarr[6] = {"M","A","A","A","X","X"};
+    PlayerController(csarr);
+        
+    string vsarr[6] = {"M","A","A","A","A","X"};
+    PlayerController(vsarr);
+        
+    string fsarr[6] = {"M","A","A","A","A","A"};
+    PlayerController(fsarr);
+        
+
+
+
+
+    /*
     sf::RenderWindow window(sf::VideoMode(1024, 768), "Main Menu");
     tgui::GuiSFML gui{window};
     tgui::Theme::setDefault("./themes/Black.txt");
@@ -94,5 +136,6 @@ int main()
     }
 
     // gui.mainLoop();
+    */
     return 0;
 }
