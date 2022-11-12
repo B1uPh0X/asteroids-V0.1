@@ -4,13 +4,15 @@
 
 class Bot {
 public:
-    sf::ConvexShape triangle;
-    Bot();
-    void create();
-    void controls(char direction);
-    void drawBot(sf::RenderWindow &window);
-    int xmove();
-    int ymove();
+	sf::ConvexShape triangle;
+	Bot();
+	void create(string fn);
+	void drawBot(sf::RenderWindow &window);
+	void run();
+	int setVelocity();
+	int setThrottle();
+	int rotate();
+	int shoot();
 };
 
 #endif //ASTEROIDS_GAME_BOT_H
