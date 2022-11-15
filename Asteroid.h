@@ -6,12 +6,10 @@
 
 class Asteroid{
 public:
-    sf::Texture m_texture;
-    sf::VertexArray m_vertices;
     sf::ConvexShape shape;
     void create();
     void draw(sf::RenderWindow &window);
-    int xLoc, yLoc, xVel, yVel;
+    void setPosition();
 private:
 };
 
