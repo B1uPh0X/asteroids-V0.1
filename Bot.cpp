@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "Bot.h"
+#include <string>
+//#include "Bot.h"
 
 #ifdef __cplusplus
 # include <lua.hpp>
@@ -9,12 +10,43 @@
 # include <lauxlib.h>
 #endif
 
-Bot::Bot(){
+using namespace std;
 
+
+
+/*
+void Bot(string x){
+alive = false;
+}
+
+static void setVelocity(){
+	cout<<"setVelocity"<<endl;
+}
+
+static void setThrottle(){
+	cout<<"setThrottle"<<endl;
+}
+
+static void rotate(){
+	cout<<"rotate"<<endl;
+}
+
+
+static void shoot(){
+	cout<<"shoot"<<endl;
+}
+
+static void kill(){
+	alive = false;
+}
+
+static bool isAlive(){
+	return alive;
 }
 
 void Bot::create(string fn){
-	triangle.setPointCount(3);
+	file = fn.c_str();
+	/*triangle.setPointCount(3);
 	triangle.setPoint(0, sf::Vector2f(0,0));
 	triangle.setPoint(1, sf::Vector2f(100, 40));
 	triangle.setPoint(2, sf::Vector2f(0, 80));
@@ -22,7 +54,7 @@ void Bot::create(string fn){
 	triangle.setScale(0.5f, 0.5f);
 	triangle.setFillColor(sf::Color::Transparent);
 	triangle.setOutlineThickness(2);
-	triangle.setOutlineColor(sf::Color::Cyan);
+	triangle.setOutlineColor(sf::Color::Cyan);*//*
 }
 
 void Bot::drawBot(sf::RenderWindow &window){
@@ -30,23 +62,27 @@ void Bot::drawBot(sf::RenderWindow &window){
 }
 
 void Bot::run(){
+	alive = true;
+
 	lua_State *state = luaL_newstate();
 
 	//Make standard libraries available in the Lua object
 	luaL_openlibs(state);
-	lua_register(state, "setVelocity", setVelocity);
-	lua_register(state, "setThrottle", setThrottle);
-	lua_register(state, "rotate", rotate);
+	lua_register(state, "setVeloc", setVelocity);
+	lua_register(state, "setThrot", setThrottle);
+	lua_register(state, "rot", rotate);
 	lua_register(state, "shoot", shoot);
+
+	lua_re
 
 	int result;
 
 	//Load the program; this supports both source code and bytecode files.
-	result = luaL_loadfile(state, filename);
+	result = luaL_loadfile(state, file);
 
 
 	if ( result != LUA_OK ) {
-    	print_error(state);
+    	//print_error(state);
     	return;
 	}
 
@@ -54,24 +90,9 @@ void Bot::run(){
 
 	
 	if ( result != LUA_OK ) {
-    	print_error(state);
+    	//print_error(state);
    		return;
   	}
 
 }
-
-void Bot::setVelocity(){
-	cout<<"setVelocity"<<endl;
-}
-
-void Bot::setThrottle(){
-	cout<<"setThrottle"<<endl;
-}
-
-void Bot::rotate(){
-	cout<<"rotate"<<endl;
-}
-
-void Bot::shoot(){
-	cout<<"shoot"<<endl;
-}
+*/

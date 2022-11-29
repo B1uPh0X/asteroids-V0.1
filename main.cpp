@@ -29,9 +29,11 @@ void initPlayers()
 
 int main()
 {
-    string sarr[6] = {"A","X","X","X","X","X"};
+    //string sarr[6] = {"Bots\\test1.lua","X","X","X","X","X"};
+    //PlayerController(sarr);
+    string sarr[6] = {"Bots\\test1.lua","Bots\\test2.lua","Bots\\test3.lua","Bots\\test4.lua","Bots\\test5.lua","Bots\\test6.lua"};
     PlayerController(sarr);
-    
+    /*
     string qsarr[6] = {"A","A","X","X","X","X"};
     PlayerController(qsarr);
     
@@ -64,7 +66,7 @@ int main()
         
     string fsarr[6] = {"M","A","A","A","A","A"};
     PlayerController(fsarr);
-        
+        */
 
 
 
