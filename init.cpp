@@ -6,6 +6,9 @@
 #include <string>
 #include <TGUI/TGUI.hpp>
 #include "game.cpp"
+#include <vector>
+#include "Player.h"
+#include "init.h"
 // #include "Asteroid.cpp"
 // #include "interpreter.cpp"
 // #include "Asteroid.h"
@@ -14,9 +17,12 @@
 
 using namespace std;
 
+vector<string> selectedPlayers;
+
 void startGame()
 {
   cout << "Start Game pressed" << endl;
+  // cout << selectedPlayers.size() << endl;
   game();
 }
 
@@ -37,7 +43,6 @@ int init()
   tgui::GuiSFML gui{window};
   tgui::Theme::setDefault("./themes/Black.txt");
 
-  vector<string> selectedPlayers{};
 
   // name label
   auto label = tgui::Label::create();

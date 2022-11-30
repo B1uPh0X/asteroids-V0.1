@@ -5,6 +5,7 @@
 #include "Weapon.h"
 #include <cmath>
 #include <vector>
+#include "init.h"
 
 int game()
 {
@@ -27,12 +28,16 @@ int game()
     t.loadFromFile("./images/space_background.jpg");
     sf::Sprite s(t);
 
+    std::cout << "-------" << std::endl;
+    std::cout << selectedPlayers.size() << std::endl;
+
     // vectors for the objects
     std::vector<Asteroid> asteroids;
     std::vector<Weapon> bullets;
 
     // position at the origin
     sf::Vector2f startPosition(512, 384);
+
 
     // setting positions for the players
     player1.triangle.setPosition(startPosition.x - 300, startPosition.y - 150);
@@ -150,13 +155,14 @@ int game()
             // collision with asteroid and player
             for (unsigned int i = 0; i < asteroids.size(); i++)
             {
-                sf::FloatRect asteroidblock = asteroid.shape.getGlobalBounds();
+                sf::FloatRect asteroidblock = asteroids[i].shape.getGlobalBounds();
                 sf::FloatRect playerblock = player1.triangle.getGlobalBounds();
                 sf::FloatRect shotbounds = bullet.bullet.getGlobalBounds();
                 if (asteroidblock.intersects(playerblock))
                 {
                     player1.triangle.move(-player1.xmove(), -player1.ymove());
-                    player1.triangle.setPosition(rand() % 924, rand() % 668);
+                    player1.triangle.setPosition(startPosition.x - 300, startPosition.y - 150);
+                    player1.triangle.setRotation(90.f);
                     limit++;
                 }
                 if (limit == 3)

@@ -3,7 +3,7 @@
 
 
 Player::Player() {
-
+    std::vector<std::string> selectedPlayers;
 }
 
 void Player::create() {

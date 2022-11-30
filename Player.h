@@ -1,6 +1,7 @@
 #ifndef ASTEROIDS_GAME_PLAYER_H
 #define ASTEROIDS_GAME_PLAYER_H
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 class Player {
 public:
