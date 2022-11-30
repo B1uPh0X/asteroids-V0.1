@@ -13,7 +13,7 @@ public:
     void color4();
     void color5();
     void color6();
-    void controls(char direction);
+    void controls();
     void drawPlayer(sf::RenderWindow &window);
     void boundaries(sf::RenderWindow &window);
     int xmove();
