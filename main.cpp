@@ -9,8 +9,6 @@
 #include "interpreter.cpp"
 #include "PlayerController.cpp"
 #include "Asteroid.h"
-#include "Player.cpp"
-#include "Player.h"
 #include "init.cpp"
 
 using namespace std;
@@ -29,44 +27,20 @@ void initPlayers()
 
 int main()
 {
-    //string sarr[6] = {"Bots\\test1.lua","X","X","X","X","X"};
-    //PlayerController(sarr);
-    string sarr[6] = {"Bots\\test1.lua","Bots\\test2.lua","Bots\\test3.lua","Bots\\test4.lua","Bots\\test5.lua","Bots\\test6.lua"};
+    //string sarr[6] = {"M","X","X","X","X","X"};
+    string sarr[6] = {"M","Bots\\test2.lua","Bots\\test3.lua","Bots\\test4.lua","Bots\\test5.lua","Bots\\test6.lua"};
     PlayerController(sarr);
-    /*
-    string qsarr[6] = {"A","A","X","X","X","X"};
-    PlayerController(qsarr);
-    
-    string asarr[6] = {"A","A","A","X","X","X"};
-    PlayerController(asarr);
-        
-    string zsarr[6] = {"A","A","A","A","X","X"};
-    PlayerController(zsarr);
-        
-    string xsarr[6] = {"A","A","A","A","A","X"};
-    PlayerController(xsarr);
-        
-    string ssarr[6] = {"A","A","A","A","A","A"};
-    PlayerController(ssarr);
-        
-    string wsarr[6] = {"M","X","X","X","X","X"};
-    PlayerController(wsarr);
-    
-    string esarr[6] = {"M","A","X","X","X","X"};
-    PlayerController(esarr);
-    
-    string dsarr[6] = {"M","A","A","X","X","X"};
-    PlayerController(dsarr);
-        
-    string csarr[6] = {"M","A","A","A","X","X"};
-    PlayerController(csarr);
-        
-    string vsarr[6] = {"M","A","A","A","A","X"};
-    PlayerController(vsarr);
-        
-    string fsarr[6] = {"M","A","A","A","A","A"};
-    PlayerController(fsarr);
-        */
+       
+    sarr[5] = "X";
+    //PlayerController(sarr);    
+    sarr[4] = "X";
+    //PlayerController(sarr);    
+    sarr[3] = "X";
+    //PlayerController(sarr);    
+    sarr[2] = "X";
+    //PlayerController(sarr);    
+    sarr[1] = "X";
+    //PlayerController(sarr);
 
 
 
