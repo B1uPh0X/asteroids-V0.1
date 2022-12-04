@@ -77,59 +77,178 @@ int game()
                 window.close();
             }
             // movement for player
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            {
-                player1.controls('u');
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            {
-                player1.controls('d');
-            }
-            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            {
-                player1.triangle.move(player1.xmove(), player1.ymove());
-            }
+            // if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+            // {
+            //     player1.controls('u');
+            // }
+            // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+            // {
+            //     player1.controls('d');
+            // }
+            // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+            // {
+            //     player1.triangle.move(player1.xmove(), player1.ymove());
+            // }
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             {
             }
             window.clear();
             window.draw(s);
 
-            // player 1 basic functions
-            player1.create();
-            player1.color1();
-            player1.drawPlayer(window);
-            player1.boundaries(window);
+            if(selectedPlayers.size() == 1){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
+            }
+            if(selectedPlayers.size() == 2){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
 
-            // player 2 basic functions;
-            player2.create();
-            player2.color2();
-            player2.drawPlayer(window);
-            player2.boundaries(window);
+                player2.create();
+                player2.color2();
+                player2.drawPlayer(window);
+                player2.boundaries(window);
+            }
+            if(selectedPlayers.size() == 3){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
 
-            // player 3 basic functions
-            player3.create();
-            player3.color3();
-            player3.drawPlayer(window);
-            player3.boundaries(window);
+                player2.create();
+                player2.color2();
+                player2.drawPlayer(window);
+                player2.boundaries(window);
 
-            // player 4 basic functions
-            player4.create();
-            player4.color4();
-            player4.drawPlayer(window);
-            player4.boundaries(window);
+                player3.create();
+                player3.color3();
+                player3.drawPlayer(window);
+                player3.boundaries(window);
+            }
+            if(selectedPlayers.size() == 4){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
 
-            // player 5 basic functions
-            player5.create();
-            player5.color5();
-            player5.drawPlayer(window);
-            player5.boundaries(window);
+                player2.create();
+                player2.color2();
+                player2.drawPlayer(window);
+                player2.boundaries(window);
 
-            // player 6 basic functions
-            player6.create();
-            player6.color6();
-            player6.drawPlayer(window);
-            player6.boundaries(window);
+                player3.create();
+                player3.color3();
+                player3.drawPlayer(window);
+                player3.boundaries(window);
+
+                player4.create();
+                player4.color4();
+                player4.drawPlayer(window);
+                player4.boundaries(window);
+            }
+            if(selectedPlayers.size() == 5){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
+
+                player2.create();
+                player2.color2();
+                player2.drawPlayer(window);
+                player2.boundaries(window);
+
+                player3.create();
+                player3.color3();
+                player3.drawPlayer(window);
+                player3.boundaries(window);
+
+                player4.create();
+                player4.color4();
+                player4.drawPlayer(window);
+                player4.boundaries(window);
+
+                player5.create();
+                player5.color5();
+                player5.drawPlayer(window);
+                player5.boundaries(window);
+
+            }
+            if(selectedPlayers.size() == 6){
+                player1.create();
+                player1.color1();
+                player1.drawPlayer(window);
+                player1.boundaries(window);
+                player1.controls();
+
+                player2.create();
+                player2.color2();
+                player2.drawPlayer(window);
+                player2.boundaries(window);
+
+                player3.create();
+                player3.color3();
+                player3.drawPlayer(window);
+                player3.boundaries(window);
+
+                player4.create();
+                player4.color4();
+                player4.drawPlayer(window);
+                player4.boundaries(window);
+
+                player5.create();
+                player5.color5();
+                player5.drawPlayer(window);
+                player5.boundaries(window);
+
+                player6.create();
+                player6.color6();
+                player6.drawPlayer(window);
+                player6.boundaries(window);
+            }
+
+            // // player 1 basic functions
+            // player1.create();
+            // player1.color1();
+            // player1.drawPlayer(window);
+            // player1.boundaries(window);
+
+            // // player 2 basic functions;
+            // player2.create();
+            // player2.color2();
+            // player2.drawPlayer(window);
+            // player2.boundaries(window);
+
+            // // player 3 basic functions
+            // player3.create();
+            // player3.color3();
+            // player3.drawPlayer(window);
+            // player3.boundaries(window);
+
+            // // player 4 basic functions
+            // player4.create();
+            // player4.color4();
+            // player4.drawPlayer(window);
+            // player4.boundaries(window);
+
+            // // player 5 basic functions
+            // player5.create();
+            // player5.color5();
+            // player5.drawPlayer(window);
+            // player5.boundaries(window);
+
+            // // player 6 basic functions
+            // player6.create();
+            // player6.color6();
+            // player6.drawPlayer(window);
+            // player6.boundaries(window);
 
             // bullets
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))

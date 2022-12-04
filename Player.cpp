@@ -48,13 +48,13 @@ void Player::color6(){
     triangle.setOutlineColor(sf::Color::Magenta);
 }
 
-void Player::controls(char direction) {
-    if (direction == 'u') {
+void Player::controls() {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         triangle.rotate(-6.f);
-    } else if (direction == 'd') {
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         triangle.rotate(6.f);
-    } else if (direction == 'f') {
-        triangle.move(1.f, 0.f);
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        triangle.move(xmove(), ymove());
     }
 }
 

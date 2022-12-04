@@ -21,15 +21,11 @@ vector<string> selectedPlayers;
 
 void startGame()
 {
-  cout << "Start Game pressed" << endl;
-  // cout << selectedPlayers.size() << endl;
-  game();
-}
-
-void removePlayer(int &players)
-{
-  cout << "Removed Player" << endl;
-  cout << players << endl;
+  if (selectedPlayers.size() > 0) 
+  {
+    cout << "Start Game pressed" << endl;
+    game();
+  }
 }
 
 bool in_array(const string &value, const vector<string> &array)
@@ -42,7 +38,6 @@ int init()
   sf::RenderWindow window(sf::VideoMode(1024, 768), "Initialize Players");
   tgui::GuiSFML gui{window};
   tgui::Theme::setDefault("./themes/Black.txt");
-
 
   // name label
   auto label = tgui::Label::create();

@@ -5,7 +5,6 @@
 #include <thread>
 #include <string>
 #include <TGUI/TGUI.hpp>
-// #include "game.cpp"
 #include "Asteroid.cpp"
 #include "interpreter.cpp"
 #include "Asteroid.h"
@@ -44,15 +43,15 @@ int main()
     startButton->onPress(&initPlayers);                                   // starts game on press
     gui.add(startButton);                                               // adds the start button
 
-    // settings button
-    tgui::Button::Ptr settingsButton = tgui::Button::create();
-    settingsButton->setSize(200, 50);                                      // set size
-    settingsButton->setPosition(100, 450);                                 // set position
-    settingsButton->setText("Settings");                                 // set text
-    settingsButton->setTextSize(24);                                       // set text size
-    settingsButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-    //settingsButton->onPress(&initPlayers);                                   // settings menu on press
-    gui.add(settingsButton);                                               // adds the settings button
+    // // settings button
+    // tgui::Button::Ptr settingsButton = tgui::Button::create();
+    // settingsButton->setSize(200, 50);                                      // set size
+    // settingsButton->setPosition(100, 450);                                 // set position
+    // settingsButton->setText("Settings");                                 // set text
+    // settingsButton->setTextSize(24);                                       // set text size
+    // settingsButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+    // //settingsButton->onPress(&initPlayers);                                   // settings menu on press
+    // gui.add(settingsButton);                                               // adds the settings button
 
     // quit button
     tgui::Button::Ptr quitButton = tgui::Button::create();
