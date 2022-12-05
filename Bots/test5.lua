@@ -1,0 +1,7 @@
+shoot()
+rotate(2963)
+setThrottle(4)
+shoot()
+rotate(-1232)
+rotate(420)
+kill()
