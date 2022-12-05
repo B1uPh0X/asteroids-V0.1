@@ -1,14 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Player.h"
+#include "Player.cpp"
 #include "Asteroid.h"
 #include "Weapon.h"
 #include <cmath>
 #include <vector>
 #include "init.h"
 
+using namespace std;
+
+int update(vector<vector<double> > upv){
+
+    return 0;
+}
+
+
 int game()
 {
+
 
     Player player1;
     Player player2;
@@ -37,7 +47,6 @@ int game()
 
     // position at the origin
     sf::Vector2f startPosition(512, 384);
-
 
     // setting positions for the players
     player1.triangle.setPosition(startPosition.x - 300, startPosition.y - 150);
@@ -71,7 +80,7 @@ int game()
         sf::Event event;
         while (window.pollEvent(event))
         {
-
+        
             if (event.type == sf::Event::Closed)
             {
                 window.close();
