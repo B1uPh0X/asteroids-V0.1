@@ -1,14 +1,23 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Player.h"
+#include "Player.cpp"
 #include "Asteroid.h"
 #include <cmath>
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
+int update(vector<vector<double> > upv){
+
+    return 0;
+}
+
+
 int game()
 {
-    Player player1;
+
     Asteroid asteroid;
 
     sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Roids");
@@ -19,7 +28,7 @@ int game()
     std::vector<sf::ConvexShape> asteroids;
 
     sf::Vector2f startPosition(512, 384);
-    player1.triangle.setPosition(startPosition);
+    //player.triangle.setPosition(startPosition);
 
     for (int i = 0; i <= 8; i++)
     {
@@ -35,7 +44,7 @@ int game()
 
         while (window.pollEvent(event))
         {
-
+        /*
             if (event.type == sf::Event::Closed)
             {
                 window.close();
@@ -82,6 +91,7 @@ int game()
                 window.draw(asteroids.at(i));
             }
             window.display();
+        */
         }
     }
     return 0;

@@ -12,6 +12,10 @@
 
 using namespace std;
 
+//player vector
+vector<vector<double> > pdata;
+
+
 int startPlayer(string e, int plyr){
 	switch (plyr){
 	//manual player
@@ -48,6 +52,7 @@ int startPlayer(string e, int plyr){
 	}
 	return 1;
 }
+
 //MANUAL game states
 //Mone start
 int Mone(string a){
@@ -55,8 +60,7 @@ int Mone(string a){
 	cout<<"Mone : MXXXXX"<<endl;
     //player threads
     thread unus(startPlayer, a, 0);
-    //player vector
-    vector<vector<double> > pdata;
+
 
     //player state game loop
     bool win_con = false;
@@ -94,8 +98,8 @@ int Mtwo(string a, string b){
 	//player threads
 	thread unus(startPlayer, a, 0);
 	thread duo(startPlayer, b, 2);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -136,8 +140,8 @@ int Mthr(string a, string b, string c){
 	thread unus(startPlayer, a, 0);
 	thread duo(startPlayer, b, 2);
 	thread tres(startPlayer, c, 3);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -181,8 +185,8 @@ int Mfou(string a, string b, string c, string d){
 	thread duo(startPlayer, b, 2);
 	thread tres(startPlayer, c, 3);
 	thread quattuor(startPlayer, d, 4);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -229,8 +233,8 @@ int Mfiv(string a, string b, string c, string d, string e){
 	thread tres(startPlayer, c, 3);
 	thread quattuor(startPlayer, d, 4);
 	thread quinque(startPlayer, e, 5);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -280,8 +284,8 @@ int Msix(string a, string b, string c, string d, string e, string f){
 	thread quattuor(startPlayer, d, 4);
 	thread quinque(startPlayer, e, 5);
 	thread sex(startPlayer, f, 6);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -329,8 +333,8 @@ int Aone(string a){
 	cout<<"Aone : AXXXXX"<<endl;
 	//player threads
 	thread unus(startPlayer, a, 1);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -368,8 +372,8 @@ int Atwo(string a, string b){
 	//player threads
 	thread unus(startPlayer, a, 1);
 	thread duo(startPlayer, b, 2);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -410,8 +414,8 @@ int Athr(string a, string b, string c){
 	thread unus(startPlayer, a, 1);
 	thread duo(startPlayer, b, 2);
 	thread tres(startPlayer, c, 3);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -455,8 +459,8 @@ int Afou(string a, string b, string c, string d){
 	thread duo(startPlayer, b, 2);
 	thread tres(startPlayer, c, 3);
 	thread quattuor(startPlayer, d, 4);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -503,8 +507,8 @@ int Afiv(string a, string b, string c, string d, string e){
 	thread tres(startPlayer, c, 3);
 	thread quattuor(startPlayer, d, 4);
 	thread quinque(startPlayer, e, 5);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
@@ -554,8 +558,8 @@ int Asix(string a, string b, string c, string d, string e, string f){
 	thread quattuor(startPlayer, d, 4);
 	thread quinque(startPlayer, e, 5);
 	thread sex(startPlayer, f, 6);
-	//player vector
-	vector<vector<double> > pdata;
+	
+	
 
 	//player state game loop
 	bool win_con = false;
