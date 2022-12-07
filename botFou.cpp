@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double FOUx = 2.2;
-double FOUy = 1.1;
+const double FOUSX = 512;
+const double FOUSY = 434;
+double FOUx = FOUSX;
+double FOUy = FOUSY;
 double FOUrot = 0.0;
 double FOUveloc = 0.0;
 double FOUdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_FOU_fetch()
 	FOUdata.push_back(FOUrot);
 	FOUdata.push_back(FOUveloc);
 	FOUdata.push_back(FOUdead);
+	FOUdata.push_back(FOUSX);
+	FOUdata.push_back(FOUSY);
 	return FOUdata;
 }
 

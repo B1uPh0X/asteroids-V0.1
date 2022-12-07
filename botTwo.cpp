@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double TWOx = 2.2;
-double TWOy = 1.1;
+const double TWOSX = 212;
+const double TWOSY = 434;
+double TWOx = TWOSX;
+double TWOy = TWOSY;
 double TWOrot = 0.0;
 double TWOveloc = 0.0;
 double TWOdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_TWO_fetch()
 	TWOdata.push_back(TWOrot);
 	TWOdata.push_back(TWOveloc);
 	TWOdata.push_back(TWOdead);
+	TWOdata.push_back(TWOSX);
+	TWOdata.push_back(TWOSY);
 	return TWOdata;
 }
 

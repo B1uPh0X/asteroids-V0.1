@@ -8,7 +8,8 @@
 #include "botFou.cpp"
 #include "botFiv.cpp"
 #include "botSix.cpp"
-#include "Player.h"
+#include "game.cpp"
+
 
 using namespace std;
 
@@ -75,6 +76,7 @@ int Mone(string a){
             cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
             }
         }
+		update(pdata);
         //check win condition(all players are dead)
         for(int i=0; i<pdata.size(); i++){
             //quick escape, no point in checking the rest of the players if at least one is alive
@@ -115,6 +117,7 @@ int Mtwo(string a, string b){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -158,6 +161,7 @@ int Mthr(string a, string b, string c){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -204,6 +208,7 @@ int Mfou(string a, string b, string c, string d){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -253,6 +258,7 @@ int Mfiv(string a, string b, string c, string d, string e){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -305,6 +311,7 @@ int Msix(string a, string b, string c, string d, string e, string f){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -349,6 +356,7 @@ int Aone(string a){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -389,6 +397,7 @@ int Atwo(string a, string b){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -432,6 +441,7 @@ int Athr(string a, string b, string c){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -478,6 +488,7 @@ int Afou(string a, string b, string c, string d){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -527,6 +538,7 @@ int Afiv(string a, string b, string c, string d, string e){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -579,6 +591,7 @@ int Asix(string a, string b, string c, string d, string e, string f){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
+		update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -601,12 +614,21 @@ int Asix(string a, string b, string c, string d, string e, string f){
 	//asix end
 }
 //playercontroller start
-int PlayerController(string e[5]){
+int PlayerController(vector<string> plyselected){
 	//constant values for manual and empty player slots
 	//No player selected
 	const string X = "X";
 	//manual player selected(can only be in player 1 slot)
 	const string M = "M";
+
+	string e[6]={X,X,X,X,X,X};
+
+	for(int m=0; m<plyselected.size(); m++){
+		e[m] = plyselected.at(m);
+	}
+	
+
+
 	//vars used for player calculation(see below)
 	int i=0;
 	bool end=false;

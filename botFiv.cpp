@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double FIVx = 2.2;
-double FIVy = 1.1;
+const double FIVSX = 812;
+const double FIVSY = 234;
+double FIVx = FIVSX;
+double FIVy = FIVSY;
 double FIVrot = 0.0;
 double FIVveloc = 0.0;
 double FIVdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_FIV_fetch()
 	FIVdata.push_back(FIVrot);
 	FIVdata.push_back(FIVveloc);
 	FIVdata.push_back(FIVdead);
+	FIVdata.push_back(FIVSX);
+	FIVdata.push_back(FIVSY);
 	return FIVdata;
 }
 

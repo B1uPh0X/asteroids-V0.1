@@ -68,9 +68,3 @@ void Player::boundaries(sf::RenderWindow &window){
         triangle.setPosition(triangle.getPosition().x,window.getSize().y - triangle.getGlobalBounds().height);
     }
 }
-
-
-
-
-
-
