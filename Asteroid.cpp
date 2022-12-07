@@ -2,8 +2,8 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-
-void Asteroid::create() {
+void Asteroid::create()
+{
     shape.setPointCount(11);
     shape.setFillColor(sf::Color::Transparent);
     shape.setOutlineThickness(1.f);
@@ -23,22 +23,28 @@ void Asteroid::create() {
     shape.setOrigin(77, 93);
 }
 
-void Asteroid::draw(sf::RenderWindow &window) {
+void Asteroid::draw(sf::RenderWindow &window)
+{
     window.draw(shape);
 }
 
-void Asteroid::setPosition(){
+void Asteroid::setPosition()
+{
     int num = rand() % 4;
-    if (num == 0) {
-       shape.setPosition(rand() % 150, rand() % 150);
+    if (num == 0)
+    {
+        shape.setPosition(rand() % 150, rand() % 150);
     }
-    if (num == 1) {
+    if (num == 1)
+    {
         shape.setPosition(1024 - rand() % 150, 0 + rand() % 150);
     }
-    if (num == 2) {
+    if (num == 2)
+    {
         shape.setPosition(0 + rand() % 150, 768 - rand() % 150);
     }
-    if (num == 3) {
+    if (num == 3)
+    {
         shape.setPosition(1024 - rand() % 150, 768 - rand() % 150);
     }
 }

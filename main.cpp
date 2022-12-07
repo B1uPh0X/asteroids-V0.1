@@ -4,13 +4,11 @@
 #include <iostream>
 #include <thread>
 #include <string>
+#include <vector>
 #include <TGUI/TGUI.hpp>
 #include "Asteroid.cpp"
-#include "PlayerController.cpp"
 #include "Asteroid.h"
 #include "init.cpp"
-#include "Weapon.h"
-#include "Weapon.cpp"
 
 using namespace std;
 
@@ -48,16 +46,16 @@ int main()
     // //settingsButton->onPress(&initPlayers);                                   // settings menu on press
     // gui.add(settingsButton);                                               // adds the settings button
 
-	// quit button
-	tgui::Button::Ptr quitButton = tgui::Button::create();
-	quitButton->setSize(200, 50);                                      // set size
-	quitButton->setPosition(100, 550);                                 // set position
-	quitButton->setText("Quit");                                  // set text
-	quitButton->setTextSize(24);                                       // set text size
-	quitButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-	quitButton->onPress([&]
-						{ window.close(); }); // closes the main menu window on press
-	gui.add(quitButton);                      // adds the quit button
+    // quit button
+    tgui::Button::Ptr quitButton = tgui::Button::create();
+    quitButton->setSize(200, 50);                                      // set size
+    quitButton->setPosition(100, 550);                                 // set position
+    quitButton->setText("Quit");                                  // set text
+    quitButton->setTextSize(24);                                       // set text size
+    quitButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
+    quitButton->onPress([&]
+                        { window.close(); }); // closes the main menu window on press
+    gui.add(quitButton);                      // adds the quit button
 
 	// name label
 	auto label = tgui::Label::create();
@@ -84,10 +82,10 @@ int main()
 				window.close();
 		}
 
-		window.clear(sf::Color(160, 160, 160));
-		gui.draw();
-		window.display();
-	}
+        window.clear(sf::Color(160, 160, 160));
+        gui.draw();
+        window.display();
+    }
 
 	// gui.mainLoop();
 	

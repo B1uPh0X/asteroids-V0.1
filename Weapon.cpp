@@ -1,24 +1,29 @@
 #include "Weapon.h"
 #include "Player.h"
 
-void Weapon::bulletcreate(){
+void Weapon::bulletcreate()
+{
     bullet.setSize(sf::Vector2f(50.f, 1.f));
     bullet.setFillColor(sf::Color::White);
 }
 
-void Weapon::bulletfire(int x, int y){
+void Weapon::bulletfire(int x, int y)
+{
     bullet.move(x, y);
 }
 
-void Weapon::bulletdraw(sf::RenderWindow &window){
+void Weapon::bulletdraw(sf::RenderWindow &window)
+{
     window.draw(bullet);
 }
 
-void Weapon::bulletposition(){
+void Weapon::bulletposition()
+{
     bullet.getGlobalBounds();
 }
 
-void Weapon::bombcreate() {
+void Weapon::bombcreate()
+{
     bomb.setPointCount(8);
     bomb.setRadius(10);
     bomb.setFillColor(sf::Color::Transparent);
