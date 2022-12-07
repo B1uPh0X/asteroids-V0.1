@@ -9,6 +9,7 @@
 
 int game()
 {
+    using namespace std;
 
     Player player1;
     Player player2;
@@ -28,16 +29,15 @@ int game()
     t.loadFromFile("./images/space_background.jpg");
     sf::Sprite s(t);
 
-    std::cout << "-------" << std::endl;
-    std::cout << selectedPlayers.size() << std::endl;
+    cout << "-------" << endl;
+    cout << selectedPlayers.size() << endl;
 
     // vectors for the objects
-    std::vector<Asteroid> asteroids;
-    std::vector<Weapon> bullets;
+    vector<Asteroid> asteroids;
+    vector<Weapon> bullets;
 
     // position at the origin
     sf::Vector2f startPosition(512, 384);
-
 
     // setting positions for the players
     player1.triangle.setPosition(startPosition.x - 300, startPosition.y - 150);
@@ -61,48 +61,39 @@ int game()
         asteroids.push_back(asteroid);
     }
 
-    // deltattime
-    sf::Clock deltaclock;
-
     while (window.isOpen())
     {
         window.setFramerateLimit(60);
-        sf::Time deltattime = deltaclock.restart();
         sf::Event event;
         while (window.pollEvent(event))
         {
+
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+
+                    isfiring = true;
+                }
+            }
 
             if (event.type == sf::Event::Closed)
             {
                 window.close();
             }
-            // movement for player
-            // if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            // {
-            //     player1.controls('u');
-            // }
-            // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            // {
-            //     player1.controls('d');
-            // }
-            // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            // {
-            //     player1.triangle.move(player1.xmove(), player1.ymove());
-            // }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-            {
-            }
             window.clear();
             window.draw(s);
 
-            if(selectedPlayers.size() == 1){
+            if (selectedPlayers.size() == 1)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
                 player1.boundaries(window);
                 player1.controls();
             }
-            if(selectedPlayers.size() == 2){
+            if (selectedPlayers.size() == 2)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
@@ -114,7 +105,8 @@ int game()
                 player2.drawPlayer(window);
                 player2.boundaries(window);
             }
-            if(selectedPlayers.size() == 3){
+            if (selectedPlayers.size() == 3)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
@@ -131,7 +123,8 @@ int game()
                 player3.drawPlayer(window);
                 player3.boundaries(window);
             }
-            if(selectedPlayers.size() == 4){
+            if (selectedPlayers.size() == 4)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
@@ -153,7 +146,8 @@ int game()
                 player4.drawPlayer(window);
                 player4.boundaries(window);
             }
-            if(selectedPlayers.size() == 5){
+            if (selectedPlayers.size() == 5)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
@@ -179,9 +173,9 @@ int game()
                 player5.color5();
                 player5.drawPlayer(window);
                 player5.boundaries(window);
-
             }
-            if(selectedPlayers.size() == 6){
+            if (selectedPlayers.size() == 6)
+            {
                 player1.create();
                 player1.color1();
                 player1.drawPlayer(window);
@@ -212,48 +206,6 @@ int game()
                 player6.color6();
                 player6.drawPlayer(window);
                 player6.boundaries(window);
-            }
-
-            // // player 1 basic functions
-            // player1.create();
-            // player1.color1();
-            // player1.drawPlayer(window);
-            // player1.boundaries(window);
-
-            // // player 2 basic functions;
-            // player2.create();
-            // player2.color2();
-            // player2.drawPlayer(window);
-            // player2.boundaries(window);
-
-            // // player 3 basic functions
-            // player3.create();
-            // player3.color3();
-            // player3.drawPlayer(window);
-            // player3.boundaries(window);
-
-            // // player 4 basic functions
-            // player4.create();
-            // player4.color4();
-            // player4.drawPlayer(window);
-            // player4.boundaries(window);
-
-            // // player 5 basic functions
-            // player5.create();
-            // player5.color5();
-            // player5.drawPlayer(window);
-            // player5.boundaries(window);
-
-            // // player 6 basic functions
-            // player6.create();
-            // player6.color6();
-            // player6.drawPlayer(window);
-            // player6.boundaries(window);
-
-            // bullets
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            {
-                isfiring = true;
             }
 
             if (isfiring)
@@ -293,7 +245,7 @@ int game()
                 {
                     if (shotbounds.intersects(asteroidblock))
                     {
-                        std::cout << "bullet hit" << std::endl;
+                        cout << "bullet hit" << endl;
                         it = asteroids.erase(it);
                     }
                 }

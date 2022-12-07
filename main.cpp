@@ -4,6 +4,7 @@
 #include <iostream>
 #include <thread>
 #include <string>
+#include <vector>
 #include <TGUI/TGUI.hpp>
 #include "Asteroid.cpp"
 #include "interpreter.cpp"
@@ -33,31 +34,29 @@ int main()
     tgui::GuiSFML gui{window};
     tgui::Theme::setDefault("./themes/Black.txt");
 
+    Player p;
+
+    // position at the origin
+    sf::Vector2f startPosition(512, 384);
+
+    p.triangle.setPosition(startPosition.x + 200, startPosition.y - 50);
+    p.triangle.setRotation(90.f);
+
     // start button
     tgui::Button::Ptr startButton = tgui::Button::create();
     startButton->setSize(200, 50);                                      // set size
     startButton->setPosition(100, 350);                                 // set position
-    startButton->setText("Start");                                 // set text
+    startButton->setText("Start");                                      // set text
     startButton->setTextSize(24);                                       // set text size
     startButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-    startButton->onPress(&initPlayers);                                   // starts game on press
+    startButton->onPress(&initPlayers);                                 // starts game on press
     gui.add(startButton);                                               // adds the start button
-
-    // // settings button
-    // tgui::Button::Ptr settingsButton = tgui::Button::create();
-    // settingsButton->setSize(200, 50);                                      // set size
-    // settingsButton->setPosition(100, 450);                                 // set position
-    // settingsButton->setText("Settings");                                 // set text
-    // settingsButton->setTextSize(24);                                       // set text size
-    // settingsButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
-    // //settingsButton->onPress(&initPlayers);                                   // settings menu on press
-    // gui.add(settingsButton);                                               // adds the settings button
 
     // quit button
     tgui::Button::Ptr quitButton = tgui::Button::create();
     quitButton->setSize(200, 50);                                      // set size
     quitButton->setPosition(100, 550);                                 // set position
-    quitButton->setText("Quit");                                  // set text
+    quitButton->setText("Quit");                                       // set text
     quitButton->setTextSize(24);                                       // set text size
     quitButton->getRenderer()->setTextColorDownHover(sf::Color::Blue); // sets click down hover text color
     quitButton->onPress([&]
@@ -90,6 +89,9 @@ int main()
         }
 
         window.clear(sf::Color(160, 160, 160));
+        p.create();
+        p.color1();
+        p.drawPlayer(window);
         gui.draw();
         window.display();
     }

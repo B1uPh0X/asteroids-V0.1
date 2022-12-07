@@ -9,11 +9,6 @@
 #include <vector>
 #include "Player.h"
 #include "init.h"
-// #include "Asteroid.cpp"
-// #include "interpreter.cpp"
-// #include "Asteroid.h"
-// #include "Player.cpp"
-// #include "Player.h"
 
 using namespace std;
 
@@ -21,7 +16,7 @@ vector<string> selectedPlayers;
 
 void startGame()
 {
-  if (selectedPlayers.size() > 0) 
+  if (selectedPlayers.size() > 0)
   {
     cout << "Start Game pressed" << endl;
     game();
@@ -53,7 +48,6 @@ int init()
   chatbox->setTextSize(24);
   chatbox->setPosition(100, 100);
   chatbox->setLinesStartFromTop();
-  // chatbox->addLine("1", tgui::Color::Black);
   gui.add(chatbox);
 
   auto chatbox2 = tgui::ChatBox::create();
@@ -61,7 +55,6 @@ int init()
   chatbox2->setTextSize(24);
   chatbox2->setPosition(100, 300);
   chatbox2->setLinesStartFromTop();
-  // chatbox2->addLine("2", tgui::Color::Black);
   gui.add(chatbox2);
 
   auto chatbox3 = tgui::ChatBox::create();
@@ -69,7 +62,6 @@ int init()
   chatbox3->setTextSize(24);
   chatbox3->setPosition(100, 500);
   chatbox3->setLinesStartFromTop();
-  // chatbox3->addLine("3", tgui::Color::Black);
   gui.add(chatbox3);
 
   auto chatbox4 = tgui::ChatBox::create();
@@ -77,7 +69,6 @@ int init()
   chatbox4->setTextSize(24);
   chatbox4->setPosition(550, 100);
   chatbox4->setLinesStartFromTop();
-  // chatbox4->addLine("4", tgui::Color::Black);
   gui.add(chatbox4);
 
   auto chatbox5 = tgui::ChatBox::create();
@@ -85,7 +76,6 @@ int init()
   chatbox5->setTextSize(24);
   chatbox5->setPosition(550, 300);
   chatbox5->setLinesStartFromTop();
-  // chatbox5->addLine("5", tgui::Color::Black);
   gui.add(chatbox5);
 
   auto chatbox6 = tgui::ChatBox::create();
@@ -93,7 +83,6 @@ int init()
   chatbox6->setTextSize(24);
   chatbox6->setPosition(550, 500);
   chatbox6->setLinesStartFromTop();
-  // chatbox6->addLine("6", tgui::Color::Black);
   gui.add(chatbox6);
 
   // delete player 1 button
@@ -123,7 +112,6 @@ int init()
               if (selectedPlayers.size() >= 5) {
                 chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
                 chatbox6->removeLine(0);
-                // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
               }
             }
           }
@@ -158,7 +146,6 @@ int init()
             if (selectedPlayers.size() >= 5) {
               chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
               chatbox6->removeLine(0);
-              // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
             }
           }
         }
@@ -190,7 +177,6 @@ int init()
           if (selectedPlayers.size() >= 5) {
             chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
             chatbox6->removeLine(0);
-            // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
           }
         }
       }  
@@ -217,7 +203,6 @@ int init()
         if (selectedPlayers.size() >= 5) {
           chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
           chatbox6->removeLine(0);
-          // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
         }
       }  
     } else {
@@ -240,7 +225,6 @@ int init()
       if (selectedPlayers.size() >= 5) {
         chatbox5->addLine(selectedPlayers[4], tgui::Color::White);
         chatbox6->removeLine(0);
-        // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
       }
     } else {
       cout << "Array 5 empty" << endl;
@@ -259,7 +243,6 @@ int init()
     if (selectedPlayers.size() > 5) {
       selectedPlayers.erase(selectedPlayers.begin() + 5);
       chatbox6->removeLine(0);
-      // chatbox6->addLine(selectedPlayers[5], tgui::Color::White);
     } else {
       cout << "Array 6 empty" << endl;
     } });
