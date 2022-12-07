@@ -1,6 +1,7 @@
 
 #include "Entity.h"
 #include <math.h>
+#include <SFML/Graphics.hpp>
 
 void Entity::move(){
     int x, y;
@@ -11,9 +12,14 @@ void Entity::move(){
 }
 
 bool Entity::isalive(){
-    if(
+    bool alive = false;
+    return alive;
 }
 
 void Entity::spawn(sf::RenderWindow &window){
+
+}
+
+void Entity::kill(){
 
 }

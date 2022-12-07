@@ -8,6 +8,7 @@ public:
     void move();
     bool isalive();
     void spawn(sf::RenderWindow &window);
+    void kill();
 }
 
 
