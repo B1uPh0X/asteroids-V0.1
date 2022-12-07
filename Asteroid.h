@@ -3,8 +3,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include "Entity.h"
 
-class Asteroid{
+class Asteroid: public Entity{
 public:
     sf::ConvexShape shape;
     void create();

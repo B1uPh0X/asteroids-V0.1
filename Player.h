@@ -1,8 +1,9 @@
 #ifndef ASTEROIDS_GAME_PLAYER_H
 #define ASTEROIDS_GAME_PLAYER_H
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
-class Player {
+class Player: public Entity {
 public:
     sf::ConvexShape triangle;
     Player();
