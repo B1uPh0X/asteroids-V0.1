@@ -1,8 +1,9 @@
 #ifndef ASTEROIDS_GAME_PLAYER_H
 #define ASTEROIDS_GAME_PLAYER_H
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
-class Player {
+class Player: public Entity {
 public:
     sf::ConvexShape triangle;
     Player();
@@ -13,11 +14,8 @@ public:
     void color4();
     void color5();
     void color6();
-    void controls();
-    void drawPlayer(sf::RenderWindow &window);
+    void draw(sf::RenderWindow &window);
     void boundaries(sf::RenderWindow &window);
-    int xmove();
-    int ymove();
 };
 
 #endif //ASTEROIDS_GAME_PLAYER_H

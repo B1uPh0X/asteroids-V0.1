@@ -3,23 +3,29 @@
 #include <math.h>
 #include <SFML/Graphics.hpp>
 
-void Entity::move(){
-    int x, y;
-    double rot, vel = 0.0;
+using namespace std;
 
-    x = vel * cos(rot);
-    y = vel * sin(rot);
+int x, y;
+double rot, vel = 0.0;
+bool alive = false;
+
+void Entity::move(){
+    x = vel * cos((float)rot);
+    y = vel * sin((float)rot);
 }
 
 bool Entity::isalive(){
-    bool alive = false;
     return alive;
 }
 
-void Entity::spawn(sf::RenderWindow &window){
+void Entity::spawn(){
 
 }
 
 void Entity::kill(){
+    alive = false;
+}
 
+void Entity::draw(){
+    
 }
