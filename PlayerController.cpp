@@ -76,7 +76,7 @@ int Mone(string a){
             cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
             }
         }
-		update(pdata);
+		//update(pdata);
         //check win condition(all players are dead)
         for(int i=0; i<pdata.size(); i++){
             //quick escape, no point in checking the rest of the players if at least one is alive
@@ -117,7 +117,7 @@ int Mtwo(string a, string b){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -161,7 +161,7 @@ int Mthr(string a, string b, string c){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		////update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -208,7 +208,7 @@ int Mfou(string a, string b, string c, string d){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -258,7 +258,7 @@ int Mfiv(string a, string b, string c, string d, string e){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -311,7 +311,7 @@ int Msix(string a, string b, string c, string d, string e, string f){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -356,7 +356,7 @@ int Aone(string a){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -397,7 +397,7 @@ int Atwo(string a, string b){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -441,7 +441,7 @@ int Athr(string a, string b, string c){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -488,7 +488,7 @@ int Afou(string a, string b, string c, string d){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -538,7 +538,7 @@ int Afiv(string a, string b, string c, string d, string e){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive
@@ -591,7 +591,7 @@ int Asix(string a, string b, string c, string d, string e, string f){
 			cout<<i<<" : "<<j<<" "<<pdata[i][j]<<endl;
 			}
 		}
-		update(pdata);
+		//update(pdata);
 		//check win condition(all players are dead)
 		for(int i=0; i<pdata.size(); i++){
 			//quick escape, no point in checking the rest of the players if at least one is alive

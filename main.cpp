@@ -7,11 +7,8 @@
 #include <vector>
 #include <TGUI/TGUI.hpp>
 #include "Asteroid.cpp"
-#include "PlayerController.cpp"
 #include "Asteroid.h"
 #include "init.cpp"
-#include "Weapon.h"
-#include "Weapon.cpp"
 
 using namespace std;
 

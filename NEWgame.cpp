@@ -8,7 +8,6 @@
 #include "Player.h"
 #include "Player.cpp"
 #include "Asteroid.h"
-#include "Weapon.h"
 #include "init.h"
 
 using namespace std;

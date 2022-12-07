@@ -5,7 +5,7 @@
 #include <thread>
 #include <string>
 #include <TGUI/TGUI.hpp>
-#include "game.cpp"
+#include "NEWgame.cpp"
 #include <vector>
 #include "Player.h"
 #include "init.h"
@@ -19,7 +19,7 @@ void startGame()
   if (selectedPlayers.size() > 0)
   {
     cout << "Start Game pressed" << endl;
-    game();
+    NEWgame(selectedPlayers);
   }
 }
 

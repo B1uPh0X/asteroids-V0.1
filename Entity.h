@@ -14,7 +14,7 @@ public:
     void spawn();
     void kill();
     void draw();
-}
+};
 
 
 #endif //ASTEROIDS_GAME_ENTITY_H
