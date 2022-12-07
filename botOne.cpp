@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double ONEx = 2.2;
-double ONEy = 1.1;
+const double ONESX = 212;
+const double ONESY = 234;
+double ONEx = ONESX;
+double ONEy = ONESY;
 double ONErot = 0.0;
 double ONEveloc = 0.0;
 double ONEdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_ONE_fetch()
 	ONEdata.push_back(ONErot);
 	ONEdata.push_back(ONEveloc);
 	ONEdata.push_back(ONEdead);
+	ONEdata.push_back(ONESX);
+	ONEdata.push_back(ONESY);
 	return ONEdata;
 }
 

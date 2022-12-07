@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double SIXx = 2.2;
-double SIXy = 1.1;
+const double SIXSX = 812;
+const double SIXSY = 434;
+double SIXx = SIXSX;
+double SIXy = SIXSY;
 double SIXrot = 0.0;
 double SIXveloc = 0.0;
 double SIXdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_SIX_fetch()
 	SIXdata.push_back(SIXrot);//2
 	SIXdata.push_back(SIXveloc);//3
 	SIXdata.push_back(SIXdead);//4
+	SIXdata.push_back(SIXSX);//5
+	SIXdata.push_back(SIXSY);//6
 	return SIXdata;
 }
 

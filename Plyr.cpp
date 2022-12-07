@@ -19,8 +19,10 @@
 using namespace std;
 
 //VARs
-double PYRx = 2.2;
-double PYRy = 1.1;
+const double PYRSX = 212;
+const double PYRSY = 234;
+double PYRx = PYRSX;
+double PYRy = PYRSY;
 double PYRrot = 0.0;
 double PYRveloc = 0.0;
 double PYRdead = 0;
@@ -58,6 +60,8 @@ vector<double> PYR_fetch()
 	PYRdata.push_back(PYRrot);
 	PYRdata.push_back(PYRveloc);
 	PYRdata.push_back(PYRdead);
+	PYRdata.push_back(PYRSX);
+	PYRdata.push_back(PYRSY);
 	return PYRdata;
 }
 //player

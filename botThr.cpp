@@ -15,8 +15,10 @@
 using namespace std;
 
 //VARs
-double THRx = 2.2;
-double THRy = 1.1;
+const double THRSX = 512;
+const double THRSY = 234;
+double THRx = THRSX;
+double THRy = THRSY;
 double THRrot = 0.0;
 double THRveloc = 0.0;
 double THRdead = 0;
@@ -48,6 +50,8 @@ vector<double> C_THR_fetch()
 	THRdata.push_back(THRrot);
 	THRdata.push_back(THRveloc);
 	THRdata.push_back(THRdead);
+	THRdata.push_back(THRSX);
+	THRdata.push_back(THRSY);
 	return THRdata;
 }
 
