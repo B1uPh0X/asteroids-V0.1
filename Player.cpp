@@ -1,17 +1,9 @@
 #include <SFML/Graphics.hpp>
-#include <math.h>
 #include "Player.h"
-
-using namespace std;
-
-
-//double veloc, rotat =0.0;
-//int x, y = 0;
-//bool alive = false;
 
 
 Player::Player() {
-    std::vector<std::string> selectedPlayers;
+
 }
 
 void Player::create() {
@@ -56,45 +48,11 @@ void Player::color6(){
     triangle.setOutlineColor(sf::Color::Magenta);
 }
 
-void Player::controls() {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        triangle.rotate(-6.f);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        triangle.rotate(6.f);
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        triangle.move(xmove(), ymove());
-    }
-}
 
-void Player::drawPlayer(sf::RenderWindow &window) {
+void Player::draw(sf::RenderWindow &window) {
     window.draw(triangle);
 }
 
-int Player::xmove(){
-    sf::Vector2f head = triangle.getTransform().transformPoint(triangle.getPoint(1));
-    sf::Vector2f origin = triangle.getTransform().transformPoint(triangle.getOrigin());
-    return (head.x - origin.x) / 8;
-}
-int Player::ymove(){
-    sf::Vector2f head = triangle.getTransform().transformPoint(triangle.getPoint(1));
-    sf::Vector2f origin = triangle.getTransform().transformPoint(triangle.getOrigin());
-    return (head.y - origin.y) / 8;
-}
-
-int Player::setVeloc(double x){
-    veloc=x;
-    return 0;
-}
-int Player::setRotat(double x){
-    rotat=x;
-    return 0;
-}
-
-int Player::move(){
-    x=veloc * cos(rotat);
-    y=veloc * sin(rotat);
-    return 0;
-}
 
 void Player::boundaries(sf::RenderWindow &window){
     if (triangle.getPosition().x <= 0) {
@@ -110,6 +68,3 @@ void Player::boundaries(sf::RenderWindow &window){
         triangle.setPosition(triangle.getPosition().x,window.getSize().y - triangle.getGlobalBounds().height);
     }
 }
-
-
-
