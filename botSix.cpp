@@ -43,11 +43,11 @@ int C_SIX_kill()
 vector<double> C_SIX_fetch()
 {
 	SIXdata.clear();
-	SIXdata.push_back(SIXx);
-	SIXdata.push_back(SIXy);
-	SIXdata.push_back(SIXrot);
-	SIXdata.push_back(SIXveloc);
-	SIXdata.push_back(SIXdead);
+	SIXdata.push_back(SIXx);//0
+	SIXdata.push_back(SIXy);//1
+	SIXdata.push_back(SIXrot);//2
+	SIXdata.push_back(SIXveloc);//3
+	SIXdata.push_back(SIXdead);//4
 	return SIXdata;
 }
 

@@ -10,16 +10,6 @@
 
 using namespace std;
 
-int update(vector<vector<double> > upv){
-
-    return 0;
-}
-
-
-int game()
-{
-
-
     Player player1;
     Player player2;
     Player player3;
@@ -29,6 +19,60 @@ int game()
     Asteroid asteroid;
     Weapon bomb;
     Weapon bullet;
+
+int update(vector<vector<double> > upv){
+    /*
+    for(int i=0; i<upv.size(); i++){
+      
+      switch(i){
+        case 0:
+            player1.setVeloc(upv[0][3]);
+            player1.setRotat(upv[0][4]);
+            player1.move();
+        break;
+        case 1:
+            player2.setVeloc(upv[0][3]);
+            player2.setRotat(upv[0][4]);
+            player2.move();
+        break;
+        case 2:
+            player3.setVeloc(upv[0][3]);
+            player3.setRotat(upv[0][4]);
+            player3.move();
+        break;
+        case 3:
+            player4.setVeloc(upv[0][3]);
+            player4.setRotat(upv[0][4]);
+            player4.move();
+        break;
+        case 4:
+            player5.setVeloc(upv[0][3]);
+            player5.setRotat(upv[0][4]);
+            player5.move();
+        break;
+        case 5:
+            player6.setVeloc(upv[0][3]);
+            player6.setRotat(upv[0][4]);
+            player6.move();
+        break;
+        default:
+            cout<<"e"<<endl;
+        break;
+      }
+    */
+    //}
+
+    return 0;
+}
+
+//called when all players are dead by playercontroller
+int gameover(){
+    return 0;
+}
+
+
+int game()
+{
     int limit = 0;
     bool isfiring = false;
 
@@ -36,14 +80,14 @@ int game()
     sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Asteroids");
     sf::Texture t;
     t.loadFromFile("./images/space_background.jpg");
-    sf::Sprite s(t);
+    sf::Sprite s(t); 
 
-    std::cout << "-------" << std::endl;
-    std::cout << selectedPlayers.size() << std::endl;
+    cout << "-------" << endl;
+    cout << selectedPlayers.size() << endl;
 
     // vectors for the objects
-    std::vector<Asteroid> asteroids;
-    std::vector<Weapon> bullets;
+    vector<Asteroid> asteroids;
+    vector<Weapon> bullets;
 
     // position at the origin
     sf::Vector2f startPosition(512, 384);
@@ -78,8 +122,8 @@ int game()
         window.setFramerateLimit(60);
         sf::Time deltattime = deltaclock.restart();
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        //while (window.pollEvent(event))
+        //{
         
             if (event.type == sf::Event::Closed)
             {
@@ -258,7 +302,7 @@ int game()
             // player6.color6();
             // player6.drawPlayer(window);
             // player6.boundaries(window);
-
+        
             // bullets
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
             {
@@ -302,14 +346,14 @@ int game()
                 {
                     if (shotbounds.intersects(asteroidblock))
                     {
-                        std::cout << "bullet hit" << std::endl;
+                        cout << "bullet hit" << endl;
                         it = asteroids.erase(it);
                     }
                 }
                 asteroids[i].draw(window);
             }
             window.display();
-        }
+        //}
     }
     return 0;
 }

@@ -24,21 +24,6 @@ void initPlayers()
 
 int main()
 {
-	//string sarr[6] = {"M","X","X","X","X","X"};
-	string sarr[6] = {"M","Bots\\test2.lua","Bots\\test3.lua","Bots\\test4.lua","Bots\\test5.lua","Bots\\test6.lua"};
-	PlayerController(sarr);
-
-	//sarr[5] = "X";
-	//PlayerController(sarr);
-	//sarr[4] = "X";
-	//PlayerController(sarr);
-	//sarr[3] = "X";
-	//PlayerController(sarr);
-	//sarr[2] = "X";
-	//PlayerController(sarr);
-	//sarr[1] = "X";
-	//PlayerController(sarr);
-	/*
 	sf::RenderWindow window(sf::VideoMode(1024, 768), "Main Menu");
 	tgui::GuiSFML gui{window};
 	tgui::Theme::setDefault("./themes/Black.txt");
@@ -105,6 +90,6 @@ int main()
 	}
 
 	// gui.mainLoop();
-	*/
+	
 	return 0;
 }
