@@ -1,15 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Player.h"
+#include "Player.cpp"
 #include "Asteroid.h"
 #include "Weapon.h"
 #include <cmath>
 #include <vector>
 #include "init.h"
 
-int game()
-{
-    using namespace std;
+using namespace std;
 
     Player player1;
     Player player2;
@@ -20,6 +19,60 @@ int game()
     Asteroid asteroid;
     Weapon bomb;
     Weapon bullet;
+
+int update(vector<vector<double> > upv){
+    /*
+    for(int i=0; i<upv.size(); i++){
+      
+      switch(i){
+        case 0:
+            player1.setVeloc(upv[0][3]);
+            player1.setRotat(upv[0][4]);
+            player1.move();
+        break;
+        case 1:
+            player2.setVeloc(upv[0][3]);
+            player2.setRotat(upv[0][4]);
+            player2.move();
+        break;
+        case 2:
+            player3.setVeloc(upv[0][3]);
+            player3.setRotat(upv[0][4]);
+            player3.move();
+        break;
+        case 3:
+            player4.setVeloc(upv[0][3]);
+            player4.setRotat(upv[0][4]);
+            player4.move();
+        break;
+        case 4:
+            player5.setVeloc(upv[0][3]);
+            player5.setRotat(upv[0][4]);
+            player5.move();
+        break;
+        case 5:
+            player6.setVeloc(upv[0][3]);
+            player6.setRotat(upv[0][4]);
+            player6.move();
+        break;
+        default:
+            cout<<"e"<<endl;
+        break;
+      }
+    */
+    //}
+
+    return 0;
+}
+
+//called when all players are dead by playercontroller
+int gameover(){
+    return 0;
+}
+
+
+int game()
+{
     int limit = 0;
     bool isfiring = false;
 
@@ -27,7 +80,7 @@ int game()
     sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Asteroids");
     sf::Texture t;
     t.loadFromFile("./images/space_background.jpg");
-    sf::Sprite s(t);
+    sf::Sprite s(t); 
 
     cout << "-------" << endl;
     cout << selectedPlayers.size() << endl;
@@ -65,18 +118,9 @@ int game()
     {
         window.setFramerateLimit(60);
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-
-            if (event.type == sf::Event::MouseButtonPressed)
-            {
-                if (event.mouseButton.button == sf::Mouse::Left)
-                {
-
-                    isfiring = true;
-                }
-            }
-
+        //while (window.pollEvent(event))
+        //{
+        
             if (event.type == sf::Event::Closed)
             {
                 window.close();
@@ -208,6 +252,48 @@ int game()
                 player6.boundaries(window);
             }
 
+            // // player 1 basic functions
+            // player1.create();
+            // player1.color1();
+            // player1.drawPlayer(window);
+            // player1.boundaries(window);
+
+            // // player 2 basic functions;
+            // player2.create();
+            // player2.color2();
+            // player2.drawPlayer(window);
+            // player2.boundaries(window);
+
+            // // player 3 basic functions
+            // player3.create();
+            // player3.color3();
+            // player3.drawPlayer(window);
+            // player3.boundaries(window);
+
+            // // player 4 basic functions
+            // player4.create();
+            // player4.color4();
+            // player4.drawPlayer(window);
+            // player4.boundaries(window);
+
+            // // player 5 basic functions
+            // player5.create();
+            // player5.color5();
+            // player5.drawPlayer(window);
+            // player5.boundaries(window);
+
+            // // player 6 basic functions
+            // player6.create();
+            // player6.color6();
+            // player6.drawPlayer(window);
+            // player6.boundaries(window);
+        
+            // bullets
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                isfiring = true;
+            }
+
             if (isfiring)
             {
                 bullet.bulletcreate();
@@ -252,7 +338,7 @@ int game()
                 asteroids[i].draw(window);
             }
             window.display();
-        }
+        //}
     }
     return 0;
 }
