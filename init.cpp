@@ -1,14 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Audio.hpp>
+#include <TGUI/TGUI.hpp>
 #include <iostream>
 #include <thread>
 #include <string>
-#include <TGUI/TGUI.hpp>
-#include "NEWgame.cpp"
 #include <vector>
-#include "Player.h"
 #include "init.h"
+#include "NEWgame.cpp"
 
 using namespace std;
 
@@ -274,12 +273,13 @@ int init()
   listBox->setItemHeight(24);
   listBox->setPosition("50%", "50%");
   listBox->setOrigin(0.5f, 0.5f);
-  listBox->addItem("Chris V");
-  listBox->addItem("Christopher M");
-  listBox->addItem("Ryan S");
-  listBox->addItem("Nishan T");
-  listBox->addItem("Amos");
-  listBox->addItem("Cyan");
+  listBox->addItem("..\\Bots\\test1.lua");
+  listBox->addItem("..\\Bots\\test2.lua");
+  listBox->addItem("..\\Bots\\test3.lua");
+  listBox->addItem("..\\Bots\\test4.lua");
+  listBox->addItem("..\\Bots\\test5.lua");
+  listBox->addItem("..\\Bots\\test6.lua");
+  listBox->addItem("M");
   listBox->setVisible(false);
   gui.add(listBox);
 

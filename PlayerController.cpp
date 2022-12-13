@@ -8,13 +8,17 @@
 #include "botFou.cpp"
 #include "botFiv.cpp"
 #include "botSix.cpp"
-#include "game.cpp"
 
 
 using namespace std;
 
 //player vector
 vector<vector<double> > pdata;
+
+vector<vector<double> > plydatafetch(){
+	return pdata;
+}
+
 
 
 int startPlayer(string e, int plyr){

@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include <iostream>
 
+using namespace std;
 
 Player::Player() {
 
@@ -15,7 +17,7 @@ void Player::create()
     triangle.setPoint(2, sf::Vector2f(0, 80));
     triangle.setOrigin(50, 40);
     triangle.setScale(0.40f, 0.40f);
-    triangle.setFillColor(sf::Color::Transparent);
+    triangle.setFillColor(sf::Color::Cyan);
     triangle.setOutlineThickness(2);
 }
 
@@ -58,6 +60,7 @@ void Player::color6()
 
 void Player::draw(sf::RenderWindow &window) {
     window.draw(triangle);
+    cout<<"in player x "<<x<<" y "<<y<<endl;
 }
 
 

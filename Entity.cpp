@@ -19,7 +19,7 @@ bool Entity::isalive(){
 }
 
 void Entity::spawn(){
-
+    alive = true;
 }
 
 void Entity::kill(){

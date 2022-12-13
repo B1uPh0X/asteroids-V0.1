@@ -73,31 +73,31 @@ int Plyr(){
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			PYRveloc++;
-			cout<<"W"<<PYRveloc<<endl;
+			//cout<<"W"<<PYRveloc<<endl;
 		}
 		//throttle down
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		{
 			PYRveloc--;
-			cout<<"S"<<PYRveloc<<endl;
+			//cout<<"S"<<PYRveloc<<endl;
 		}
 		//rotate left?
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		{
 			PYRrot--;
-			cout<<"A"<<PYRrot<<endl;
+			//cout<<"A"<<PYRrot<<endl;
 		}
 		//rotate right?
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			PYRrot++;
-			cout<<"D"<<PYRrot<<endl;
+			//cout<<"D"<<PYRrot<<endl;
 		}
 		//shoot
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
 			PYR_shoot();
-			cout<<"p shot"<<endl;
+			//cout<<"p shot"<<endl;
 		}
 		//kill(testing purposes)
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift))

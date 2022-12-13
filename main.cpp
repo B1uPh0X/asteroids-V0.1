@@ -6,9 +6,8 @@
 #include <string>
 #include <vector>
 #include <TGUI/TGUI.hpp>
-#include "Asteroid.cpp"
-#include "Asteroid.h"
 #include "init.cpp"
+#include "init.h"
 
 using namespace std;
 

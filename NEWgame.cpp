@@ -5,13 +5,20 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "PlayerController.cpp"
-#include "Player.h"
+#include "Entity.cpp"
+//#include "Player.h"
 #include "Player.cpp"
-#include "Asteroid.h"
-#include "init.h"
+//#include "Asteroid.h"
+#include "Asteroid.cpp"
+//#include "Entity.h"
+#include "Bullet.cpp"
 
 using namespace std;
+
 vector<double> r;
+bool over = false;
+
+
 void gib(vector<double> e){
 	r.clear();
 	r = e;
@@ -20,11 +27,22 @@ vector<double> get(){
 	return r;
 }
 
+void gameover(){
+	over = true;
+}
+
+int execute(vector<string> q){
+	PlayerController(q);
+	return 0;
+}
+
 int NEWgame(vector<string> selectedPlayers){
 
 	int num = selectedPlayers.size();
-	vector<double> plydata;
+	vector<vector<double>> plydata;
 	vector<Player> players;
+	
+	thread p (execute, selectedPlayers);
 
 	Player player1;
 	Player player2;
@@ -56,11 +74,7 @@ int NEWgame(vector<string> selectedPlayers){
 	roids.push_back(asteroid5);
 	roids.push_back(asteroid6);
 
-	//vector<double> Barrys;
-
-
-
-	bool wait=false;
+	vector<Bullet> Barrys;
 
 	//window rendering
 	sf::RenderWindow window(sf::VideoMode(1024, 768), "AT-Asteroids");
@@ -68,53 +82,75 @@ int NEWgame(vector<string> selectedPlayers){
 	t.loadFromFile("./images/space_background.jpg");
 	sf::Sprite s(t);
 	sf::Event event;
+	window.display();
 	//any key wait
 	/*do{
 		if(sf::Event::KeyPressed())
 			wait=true;
 	}while(wait==false)*/
 
+	plydata.clear();
+	plydata = plydatafetch();
 	for(int i=0; i<num; i++){
-		//players[i].spawn();
+		players[i].x=(int)plydata[i][0];
+		players[i].y=(int)plydata[i][1];
+		players[i].spawn();
+		players[i].create();
+		players[i].draw(window);
 	}
-	while(window.isOpen()){
+	
+	//while(window.isOpen()){
+			cout<<plydata[0][0]<<"X in game Y"<<plydata[0][1]<<endl;
+			cout<<player1.x<<" "<<player1.y<<endl;
 
-		if (event.type == sf::Event::Closed)
-		{
+			window.clear();
+			window.draw(s);
+		while (window.pollEvent(event)){
+			if (event.type == sf::Event::Closed)
+			{
 			window.close();
+			}
 		}
-
+		
 		for (int i=0; i<roids.size();i++){
-			//if(roids[i].alive()=false)
-			//	roids[i].makeAlive();
-			//roids[i].move();
+			if(roids[i].isalive()==false)
+				roids[i].spawn();
+			roids[i].move();
+			roids[i].draw(window);
 		}
 
 		plydata.clear();
-		plydata = get();
+		plydata = plydatafetch();
 
 		for(int i=0; i<num; i++){
-			players[i].alive=plydata[4];
-			//if(players[i].alive()){
-			//	players[i].rot=plydata[2];
-			//	players[i].vel=plydata[3];
-			//	players[i].move();
-			//}
-			//else{}//kill?
+			players[i].alive=(bool)plydata[i][4];
+			if(players[i].isalive()==true){
+				players[i].rot=plydata[i][2];
+				players[i].vel=plydata[i][3];
+				players[i].boundaries(window);
+				players[i].move();
+				players[i].draw(window);
+			}
+			else{
+			}
+						cout<<plydata[0][0]<<"X in ewqgame Y"<<plydata[0][1]<<endl;
+			cout<<player1.x<<" ewq "<<player1.y<<endl;
 
 		}
 
 		/*for(int i=0; i<Barrys.size(); i++){
-			if(Barrys[i].isAlive()==true){
-				Barrys[i].move();
-				i++;
-			}
-			else{
-				Barrys[i].erase;
-				i--;
-			}
+			//if(Barrys[i].isAlive()==true){
+			//	Barrys[i].move();
+			//	i++;
+			//}
+			//else{
+			//	Barrys[i].erase;
+			//	i--;
+			//}
 		}*/
-
-	}
+		
+			window.display();
+	//}
+p.join();
 return 0;
 }
